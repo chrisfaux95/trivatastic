@@ -142,6 +142,14 @@
         }).then(function (res) {
             console.log(res);
         });
+
+        // Entertainment: Japanese Anime & Manga
+        $.ajax({
+            url: "https://opentdb.com/api.php?amount=50&category=31&type=multiple",
+            method: "GET"
+        }).then(function (res) {
+            console.log(res);
+        });
     </script>
 </body>
 
