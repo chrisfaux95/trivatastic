@@ -23,36 +23,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         //General Knowledge
+        //Easy
         $.ajax({
-            url: "https://opentdb.com/api.php?amount=50&category=9",
+            url: "https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple",
             method: "GET"
         }).then(function(res){
             console.log(res);
         });
 
-        //Entertainment: Books
+        //Medium
         $.ajax({
-            url: "https://opentdb.com/api.php?amount=50&category=10",
+            url: "https://opentdb.com/api.php?amount=50&category=9&difficulty=medium&type=multiple",
             method: "GET"
         }).then(function(res){
             console.log(res);
         });
 
-        //Entertainment: Film
+        //Hard
         $.ajax({
-            url: "https://opentdb.com/api.php?amount=50&category=11",
+            url: "https://opentdb.com/api.php?amount=50&category=9&difficulty=hard&type=multiple",
             method: "GET"
         }).then(function(res){
             console.log(res);
         });
 
-        //Entertainment: Music
-        $.ajax({
-            url: "https://opentdb.com/api.php?amount=50&category=12",
-            method: "GET"
-        }).then(function(res){
-            console.log(res);
-        });
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=9&difficulty=easy&type=multiple",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Books
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=10",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Film
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=11",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Music
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=12",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
     </script>
 </body>
 
