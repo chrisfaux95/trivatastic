@@ -118,7 +118,7 @@
         // }).then(function (res) {
         //     console.log(res);
         // });
-        
+
         // //Animals
         // $.ajax({
         //     url: "https://opentdb.com/api.php?amount=50&category=27&type=multiple",
@@ -151,14 +151,23 @@
         //     console.log(res);
         // });
 
+        var responseCode = 1;
+        var amntNum = 50;
+
         const typeArr = ["multiple", "boolean"];
         const difficultyArr = ["easy", "medium", "hard"];
-        $.ajax({
-            url: "https://opentdb.com/api.php?amount=50&category=31&type=multiple",
-            method: "GET"
-        }).then(function (res) {
-            console.log(res);
-        });
+        for (var i = 9; i <= 32; i++) {
+            for (var j = 0; j < typeArr.length; j++) {
+                for (var k = 0; k < difficultyArr.length; k++) {
+                    $.ajax({
+                        url: "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + i + "&difficulty=" + difficultyArr[k] + "&type=" + typeArr[j],
+                        method: "GET"
+                    }).then(function (res) {
+                        console.log(res);
+                    });
+                }
+            }
+        }
     </script>
 </body>
 
