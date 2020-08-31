@@ -22,8 +22,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        //General Knowledge
         $.ajax({
-            url: "https://opentdb.com/api.php?amount=50",
+            url: "https://opentdb.com/api.php?amount=50&category=9",
+            method: "GET"
+        }).then(function(res){
+            console.log(res);
+        });
+
+        //Entertainment: Books
+        $.ajax({
+            url: "https://opentdb.com/api.php?amount=50&category=10",
+            method: "GET"
+        }).then(function(res){
+            console.log(res);
+        });
+
+        //Entertainment: Film
+        $.ajax({
+            url: "https://opentdb.com/api.php?amount=50&category=11",
+            method: "GET"
+        }).then(function(res){
+            console.log(res);
+        });
+
+        //Entertainment: Music
+        $.ajax({
+            url: "https://opentdb.com/api.php?amount=50&category=12",
             method: "GET"
         }).then(function(res){
             console.log(res);
