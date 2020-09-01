@@ -1,3 +1,5 @@
+const br = "<br>";
+
 const categories = [
     {name: "General Knowledge", value: 9},
     {name: "Entertainment: Books", value: 10},
@@ -109,41 +111,22 @@ $(".categoryBtn").on("click", function() {
                 for(var i = 0; i < res.results.length; i++){
                     var ansArr = [];
                     var questionStr = res.results[i].question;
-                    var questionP = $("<p>").html(questionStr);
+                    var questionP = $("<h4>").html(questionStr);
                     $("#visuals").append(questionP);
                     if(res.results[i].type === "multiple"){
-                        ansArr.push(res.results[i].correct_answer);
-                        ansArr.push(res.results[i].incorrect_answers[0]);
-                        ansArr.push(res.results[i].incorrect_answers[1]);
-                        ansArr.push(res.results[i].incorrect_answers[2]);
-                        var ansBtn1 = $("<button>").html(ansArr[0]);
-                        ansBtn1.attr("class", "btn btn-primary");
-                        var ansBtn2 = $("<button>").html(ansArr[1]);
-                        ansBtn2.attr("class", "btn btn-primary");
-                        var ansBtn3 = $("<button>").html(ansArr[2]);
-                        ansBtn3.attr("class", "btn btn-primary");
-                        var ansBtn4 = $("<button>").html(ansArr[3]);
-                        ansBtn4.attr("class", "btn btn-primary");
-                        $("#visuals").append(ansBtn1);
-                        $("#visuals").append("<br>");
-                        $("#visuals").append(ansBtn2);
-                        $("#visuals").append("<br>");
-                        $("#visuals").append(ansBtn3);
-                        $("#visuals").append("<br>");
-                        $("#visuals").append(ansBtn4);
-                        $("#visuals").append("<br>");
+                        ansArr = [...res.results[i].incorrect_answers, res.results[i].correct_answer]
+                        shuffleArray(ansArr);
+                        ansArr.forEach(e=>{
+                            let ansBtn = $("<button>").html(e).addClass("btn btn-primary")
+                            $("#visuals").append(ansBtn, br);
+                        });
                     } else if (res.results[i].type === "boolean") {
                         var ansBtn1 = $("<button>").html("True");
-                        ansBtn1.attr("class", "btn btn-primary");
+                        ansBtn1.attr("class", "btn btn-success");
                         var ansBtn2 = $("<button>").html("False");
-                        ansBtn2.attr("class", "btn btn-primary");
-                        $("#visuals").append(ansBtn1);
-                        $("#visuals").append("<br>");
-                        $("#visuals").append(ansBtn2);
-                        $("#visuals").append("<br>");
+                        ansBtn2.attr("class", "btn btn-danger");
+                        $("#visuals").append(ansBtn1, br, ansBtn2, br);
                     }
-                    $("#visuals").append("<br>");
-                    $("#visuals").append("<hr>");
                     $("#visuals").append("<br>");
                 }
             }
@@ -154,3 +137,13 @@ $(".categoryBtn").on("click", function() {
             }
         });
     }  
+
+/* Function to shuffle the questions:
+From: https://stackoverflow.com/a/12646864/13871979 */
+/* Randomize array in-place using Durstenfeld shuffle algorithm */
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
