@@ -1,32 +1,32 @@
 const categories = [
-    {type: "General Knowledge", id: 9},
-    {type: "Entertainment: Books", id: 10},
-    {type: "Entertainment: Film", id: 11},
-    {type: "Entertainment: Music", id: 12},
-    {type: "Entertainment: Musicals & Theatres", id: 13},
-    {type: "Entertainment: TV", id: 14},
-    {type: "Entertainment: Video Games", id: 15},
-    {type: "Entertainment: Board Games", id: 16},
-    {type: "Science & Nature", id: 17},
-    {type: "Science: Computers", id: 18},
-    {type: "Science: Mathematics", id: 19},
-    {type: "Mythology", id: 20},
-    {type: "Sports", id: 21},
-    {type: "Geography", id: 22},
-    {type: "History", id: 23},
-    {type: "Politics", id: 24},
-    {type: "Art", id: 25},
-    {type: "Celebrities", id: 26},
-    {type: "Animals", id: 27},
-    {type: "Vehicles", id: 28},
-    {type: "Entertainment: Comics", id: 29},
-    {type: "Science: Gadgets", id: 30},
-    {type: "Entertainment: Japanese Anime & Manga", id: 31},
-    {type: "Entertainment: Cartoons & Animation", id: 32}
+    {name: "General Knowledge", value: 9},
+    {name: "Entertainment: Books", value: 10},
+    {name: "Entertainment: Film", value: 11},
+    {name: "Entertainment: Music", value: 12},
+    {name: "Entertainment: Musicals & Theatres", value: 13},
+    {name: "Entertainment: TV", value: 14},
+    {name: "Entertainment: Vvalueeo Games", value: 15},
+    {name: "Entertainment: Board Games", value: 16},
+    {name: "Science & Nature", value: 17},
+    {name: "Science: Computers", value: 18},
+    {name: "Science: Mathematics", value: 19},
+    {name: "Mythology", value: 20},
+    {name: "Sports", value: 21},
+    {name: "Geography", value: 22},
+    {name: "History", value: 23},
+    {name: "Politics", value: 24},
+    {name: "Art", value: 25},
+    {name: "Celebrities", value: 26},
+    {name: "Animals", value: 27},
+    {name: "Vehicles", value: 28},
+    {name: "Entertainment: Comics", value: 29},
+    {name: "Science: Gadgets", value: 30},
+    {name: "Entertainment: Japanese Anime & Manga", value: 31},
+    {name: "Entertainment: Cartoons & Animation", value: 32}
 ]
 categories.sort((a,b) => {
-    let nameA = a.type.toUpperCase();
-    let nameB = b.type.toUpperCase();
+    let nameA = a.name.toUpperCase();
+    let nameB = b.name.toUpperCase();
     if(nameA < nameB) return -1;
     if(nameA > nameB) return 1;
     return 0;
@@ -34,30 +34,37 @@ categories.sort((a,b) => {
 
 
 categories.forEach(e => {
-    let s = $("<option>").text(e.type);
-    s.attr("value", e.id)
+    let s = $("<option>").text(e.name);
+    s.attr("value", e.value)
     s.appendTo($("#inputCategory"));
 
 });
-const difficulties = ["Easy", "Medium", "Hard", "Any"];
+const difficulties = [
+    {name: "Easy", value: "easy"},
+    {name: "Medium", value: "medium"},
+    {name: "Hard", value: "hard"},
+    {name: "Any", value: null}];
 difficulties.forEach(e => {
     let d = $("<div>").addClass("form-check");
     let i = $("<input>").addClass("form-check-input").attr({
-        type: "radio", name: "difficultyRadios"
+        type: "radio", name: "difficultyRadios", value: e.value
     })
-    let l = $("<label>").text(e).addClass("form-check-label")
+    let l = $("<label>").text(e.name).addClass("form-check-label")
     d.append(i,l);
     $("#difficulties").append(d);
 });
 
-const types = ["True/False", "Multiple Choice", "Any"];
+const types = [
+    {name: "True/False", value: "boolean"}, 
+    {name: "Multiple Choice", value: "multiple"}, 
+    {name: "Any", value: null}];
 
 types.forEach(e => {
     let d = $("<div>").addClass("form-check");
     let i = $("<input>").addClass("form-check-input").attr({
-        type: "radio", name: "typeRadios"
+        type: "radio", name: "typeRadios", value: e.value
     })
-    let l = $("<label>").text(e).addClass("form-check-label")
+    let l = $("<label>").text(e.name).addClass("form-check-label")
     d.append(i,l);
     $("#types").append(d);
 });
@@ -67,8 +74,11 @@ $(".categoryBtn").on("click", function() {
     // var value = $(this).val();
     // var difficulty = $(this).data...
     //var type = ...
+    const category = $("#inputCategory :selected").val()
+    const difficulty = $("input[type='radio'][name='categoryRadios']:checked").val();
+    const type = $("input[type='radio'][name='typeRadios']:checked").val();
     const MAXAMNT = 50;
-    quizAjax(MAXAMNT, value, difficulty, type)
+    quizAjax(MAXAMNT, category, difficulty, type)
     });
     
     function quizAjax(amntNum, catNum, type, difficulty) {
