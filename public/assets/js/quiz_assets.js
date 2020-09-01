@@ -5,7 +5,7 @@ const categories = [
     {name: "Entertainment: Music", value: 12},
     {name: "Entertainment: Musicals & Theatres", value: 13},
     {name: "Entertainment: TV", value: 14},
-    {name: "Entertainment: Vvalueeo Games", value: 15},
+    {name: "Entertainment: Video Games", value: 15},
     {name: "Entertainment: Board Games", value: 16},
     {name: "Science & Nature", value: 17},
     {name: "Science: Computers", value: 18},
@@ -74,28 +74,33 @@ $(".categoryBtn").on("click", function() {
     // var value = $(this).val();
     // var difficulty = $(this).data...
     //var type = ...
+    event.preventDefault();
     const category = $("#inputCategory :selected").val()
-    const difficulty = $("input[type='radio'][name='categoryRadios']:checked").val();
+    const difficulty = $("input[type='radio'][name='difficultyRadios']:checked").val();
     const type = $("input[type='radio'][name='typeRadios']:checked").val();
     const MAXAMNT = 50;
-    console.log(category, difficulty, type)
+
+    console.log(category, difficulty, type);
+
     quizAjax(MAXAMNT, category, difficulty, type)
     });
     
-    function quizAjax(amntNum, catNum, type, difficulty) {
+    function quizAjax(amntNum, catNum, difficulty, type) {
+        var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum + "&difficulty=" + difficulty + "&type=" + type;
+        console.log(queryURL)
         $.ajax({
-            url: "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum + "&difficulty=" + difficulty + "&type=" + qType,
+            url: queryURL,
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
+                // console.log(res);
+                // count++;
+                // console.log(count);
                 console.log(res);
-                count++;
-                console.log(count);
             }
             else {
                 if (amntNum > 0) {
-                    amntNum--;
-                    quizAjax(amntNum, i, type, difficulty);
+                    quizAjax(amntNum - 1, catNum, type, difficulty);
                 }
             }
         });
