@@ -24,6 +24,14 @@ const categories = [
     {type: "Entertainment: Japanese Anime & Manga", id: 31},
     {type: "Entertainment: Cartoons & Animation", id: 32}
 ]
+categories.sort((a,b) => {
+    let nameA = a.type.toUpperCase();
+    let nameB = b.type.toUpperCase();
+    if(nameA < nameB) return -1;
+    if(nameA > nameB) return 1;
+    return 0;
+})
+
 
 categories.forEach(e => {
     let s = $("<option>").text(e.type);
