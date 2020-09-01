@@ -103,9 +103,19 @@ $(".categoryBtn").on("click", function() {
         }).then(function (res) {
             if (res.response_code === 0) {
                 console.log(res);
+                var ansArr = [];
                 for(var i = 0; i < 10; i++){
-                var questionP = $("<p>").html(res.results[i].question);
-                $("#dump").append(questionP);
+                    var questionP = $("<p>").html(res.results[i].question);
+                    $("#dump").append(questionP);
+                    if(type === "boolean"){
+                        ansArr.push(res.results[i].correct_answer);
+                        ansArr.push(res.results[i].incorrect_answers[0]);
+                        ansArr.push(res.results[i].incorrect_answers[1]);
+                        ansArr.push(res.results[i].incorrect_answers[2]);
+                    } else if (type === "multiple") {
+                        ansArr.push(res.results[i].correct_answer);
+                        ansArr.push(res.results[i].incorrect_answers[0]);
+                    }
                 }
             }
             else {
