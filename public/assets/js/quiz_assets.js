@@ -100,6 +100,8 @@ $(".categoryBtn").on("click", function() {
         }).then(function (res) {
             if (res.response_code === 0) {
                 $("#visuals").empty();
+                $("#visuals").append("<hr>");
+                $("#visuals").append("<br>");
                 catH = $("<h1>").html(res.results[0].category);
                 $("#heading").append(catH);
                 console.log(res);
@@ -123,17 +125,26 @@ $(".categoryBtn").on("click", function() {
                         var ansBtn4 = $("<button>").html(ansArr[3]);
                         ansBtn4.attr("class", "btn btn-primary");
                         $("#visuals").append(ansBtn1);
+                        $("#visuals").append("<br>");
                         $("#visuals").append(ansBtn2);
+                        $("#visuals").append("<br>");
                         $("#visuals").append(ansBtn3);
+                        $("#visuals").append("<br>");
                         $("#visuals").append(ansBtn4);
+                        $("#visuals").append("<br>");
                     } else if (res.results[i].type === "boolean") {
                         var ansBtn1 = $("<button>").html("True");
                         ansBtn1.attr("class", "btn btn-primary");
                         var ansBtn2 = $("<button>").html("False");
                         ansBtn2.attr("class", "btn btn-primary");
                         $("#visuals").append(ansBtn1);
+                        $("#visuals").append("<br>");
                         $("#visuals").append(ansBtn2);
+                        $("#visuals").append("<br>");
                     }
+                    $("#visuals").append("<br>");
+                    $("#visuals").append("<hr>");
+                    $("#visuals").append("<br>");
                 }
             }
             else {
