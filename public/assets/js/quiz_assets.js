@@ -71,9 +71,6 @@ types.forEach(e => {
 
 
 $(".categoryBtn").on("click", function() {
-    // var value = $(this).val();
-    // var difficulty = $(this).data...
-    //var type = ...
     event.preventDefault();
     const category = $("#inputCategory :selected").val()
     const difficulty = $("input[type='radio'][name='difficultyRadios']:checked").val();
