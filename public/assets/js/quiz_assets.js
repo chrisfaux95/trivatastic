@@ -43,7 +43,7 @@ const difficulties = [
     {name: "Easy", value: "easy"},
     {name: "Medium", value: "medium"},
     {name: "Hard", value: "hard"},
-    {name: "Any", value: null}];
+    {name: "Any", value: "any"}];
 difficulties.forEach(e => {
     let d = $("<div>").addClass("form-check");
     let i = $("<input>").addClass("form-check-input").attr({
@@ -57,7 +57,7 @@ difficulties.forEach(e => {
 const types = [
     {name: "True/False", value: "boolean"}, 
     {name: "Multiple Choice", value: "multiple"}, 
-    {name: "Any", value: null}];
+    {name: "Any", value: "any"}];
 
 types.forEach(e => {
     let d = $("<div>").addClass("form-check");
@@ -86,21 +86,46 @@ $(".categoryBtn").on("click", function() {
     });
     
     function quizAjax(amntNum, catNum, difficulty, type) {
-        var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum + "&difficulty=" + difficulty + "&type=" + type;
+        var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum;
+        if(difficulty != "any"){
+            queryURL += "&difficulty=" + difficulty;
+        }
+        if(type != "any"){
+            queryURL += "&type=" + type;
+        }
+
         console.log(queryURL)
+        
+        
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
-                // console.log(res);
-                // count++;
-                // console.log(count);
                 console.log(res);
+                var ansArr = [];
+                for(var i = 0; i < res.results.length; i++){
+                    var ansArr = [];
+                    var questionP = $("<p>").html(res.results[i].question);
+                    $("#dump").append(questionP);
+                    if(type === "multiple"){
+                        ansArr.push(res.results[i].correct_answer);
+                        ansArr.push(res.results[i].incorrect_answers[0]);
+                        ansArr.push(res.results[i].incorrect_answers[1]);
+                        ansArr.push(res.results[i].incorrect_answers[2]);
+                        var answersP = $("<p>").html([ ...ansArr ]);
+                        $("#dump").append(answersP);
+                    } else if (type === "boolean") {
+                        ansArr.push(res.results[i].correct_answer);
+                        ansArr.push(res.results[i].incorrect_answers[0]);
+                        var answersP = $("<p>").html([...ansArr]);
+                        $("#dump").append(answersP);
+                    }
+                }
             }
             else {
                 if (amntNum > 0) {
-                    quizAjax(amntNum - 1, catNum, type, difficulty);
+                    quizAjax(amntNum - 1, catNum, difficulty, type);
                 }
             }
         });
