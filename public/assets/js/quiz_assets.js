@@ -78,6 +78,7 @@ $(".categoryBtn").on("click", function() {
     const difficulty = $("input[type='radio'][name='categoryRadios']:checked").val();
     const type = $("input[type='radio'][name='typeRadios']:checked").val();
     const MAXAMNT = 50;
+    console.log(category, difficulty, type)
     quizAjax(MAXAMNT, category, difficulty, type)
     });
     
