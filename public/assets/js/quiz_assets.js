@@ -43,7 +43,7 @@ const difficulties = [
     {name: "Easy", value: "easy"},
     {name: "Medium", value: "medium"},
     {name: "Hard", value: "hard"},
-    {name: "Any", value: null}];
+    {name: "Any", value: "any"}];
 difficulties.forEach(e => {
     let d = $("<div>").addClass("form-check");
     let i = $("<input>").addClass("form-check-input").attr({
@@ -57,7 +57,7 @@ difficulties.forEach(e => {
 const types = [
     {name: "True/False", value: "boolean"}, 
     {name: "Multiple Choice", value: "multiple"}, 
-    {name: "Any", value: null}];
+    {name: "Any", value: "any"}];
 
 types.forEach(e => {
     let d = $("<div>").addClass("form-check");
@@ -87,10 +87,10 @@ $(".categoryBtn").on("click", function() {
     
     function quizAjax(amntNum, catNum, difficulty, type) {
         var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum;
-        if(difficulty){
+        if(difficulty != "any"){
             queryURL += "&difficulty=" + difficulty;
         }
-        if(type){
+        if(type != "any"){
             queryURL += "&type=" + type;
         }
 
@@ -105,16 +105,21 @@ $(".categoryBtn").on("click", function() {
                 console.log(res);
                 var ansArr = [];
                 for(var i = 0; i < 10; i++){
+                    var ansArr = [];
                     var questionP = $("<p>").html(res.results[i].question);
                     $("#dump").append(questionP);
-                    if(type === "boolean"){
+                    if(type === "multiple"){
                         ansArr.push(res.results[i].correct_answer);
                         ansArr.push(res.results[i].incorrect_answers[0]);
                         ansArr.push(res.results[i].incorrect_answers[1]);
                         ansArr.push(res.results[i].incorrect_answers[2]);
-                    } else if (type === "multiple") {
+                        var answersP = $("<p>").html([ ...ansArr ]);
+                        $("#dump").append(answersP);
+                    } else if (type === "boolean") {
                         ansArr.push(res.results[i].correct_answer);
                         ansArr.push(res.results[i].incorrect_answers[0]);
+                        var answersP = $("<p>").html([...ansArr]);
+                        $("#dump").append(answersP);
                     }
                 }
             }
