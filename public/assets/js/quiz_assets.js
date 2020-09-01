@@ -103,6 +103,10 @@ $(".categoryBtn").on("click", function() {
         }).then(function (res) {
             if (res.response_code === 0) {
                 console.log(res);
+                for(var i = 0; i < 10; i++){
+                var questionP = $("<p>").html(res.results[i].question);
+                $("#dump").append(questionP);
+                }
             }
             else {
                 if (amntNum > 0) {
