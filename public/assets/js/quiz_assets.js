@@ -104,7 +104,7 @@ $(".categoryBtn").on("click", function() {
             if (res.response_code === 0) {
                 console.log(res);
                 var ansArr = [];
-                for(var i = 0; i < 10; i++){
+                for(var i = 0; i < res.results.length; i++){
                     var ansArr = [];
                     var questionP = $("<p>").html(res.results[i].question);
                     $("#dump").append(questionP);
