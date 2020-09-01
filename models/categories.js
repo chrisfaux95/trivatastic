@@ -1,9 +1,11 @@
-module.exports = function(sequelize, DataTypes) {
-    var Categories = sequelize.define("Category", {name: DataTypes.STRING});
+module.exports = function (sequelize, DataTypes) {
+    var Category = sequelize.define("Category", {
+        name: DataTypes.STRING
+    });
 
-    Categories.associate = function(models) {
-        Categories.hasMany(models.Score);
+    Category.associate = function (models) {
+        Category.hasMany(models.Score);
     }
 
-    return Categories;
+    return Category;
 }

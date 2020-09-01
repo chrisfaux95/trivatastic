@@ -1,20 +1,20 @@
 // HELP ME
-modules.exports = function(sequelize, DataTypes) {
-    var Scores = sequelize.define("Scores", {
+module.exports = function(sequelize, DataTypes) {
+    var Score = sequelize.define("Scores", {
         score: {
             type: DataTypes.NUMBER,
             allowNull: false
         }
     });
 
-    Scores.associate = function(models) {
-        Scores.belongsTo(models.User, {
+    Score.associate = function(models) {
+        Score.belongsTo(models.User, {
             foreignKey: { allowNull: false }
         });
-        Scores.belongsTo(models.Categories, {
+        Score.belongsTo(models.Category, {
             foreignKey: { allowNull: false }
         });
     };
 
-    return Scores;
+    return Score;
 };
