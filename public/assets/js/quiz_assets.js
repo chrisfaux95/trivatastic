@@ -71,9 +71,6 @@ types.forEach(e => {
 
 
 $(".categoryBtn").on("click", function() {
-    // var value = $(this).val();
-    // var difficulty = $(this).data...
-    //var type = ...
     event.preventDefault();
     const category = $("#inputCategory :selected").val()
     const difficulty = $("input[type='radio'][name='difficultyRadios']:checked").val();
@@ -102,26 +99,52 @@ $(".categoryBtn").on("click", function() {
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
+                $("#visuals").empty();
+                $("#visuals").append("<hr>");
+                $("#visuals").append("<br>");
+                catH = $("<h1>").html(res.results[0].category);
+                $("#heading").append(catH);
                 console.log(res);
                 var ansArr = [];
                 for(var i = 0; i < res.results.length; i++){
                     var ansArr = [];
                     var questionStr = res.results[i].question;
                     var questionP = $("<p>").html(questionStr);
-                    $("#dump").append(questionP);
-                    if(type === "multiple"){
+                    $("#visuals").append(questionP);
+                    if(res.results[i].type === "multiple"){
                         ansArr.push(res.results[i].correct_answer);
                         ansArr.push(res.results[i].incorrect_answers[0]);
                         ansArr.push(res.results[i].incorrect_answers[1]);
                         ansArr.push(res.results[i].incorrect_answers[2]);
-                        var answersP = $("<p>").html([ ...ansArr ]);
-                        $("#dump").append(answersP);
-                    } else if (type === "boolean") {
-                        ansArr.push(res.results[i].correct_answer);
-                        ansArr.push(res.results[i].incorrect_answers[0]);
-                        var answersP = $("<p>").html([...ansArr]);
-                        $("#dump").append(answersP);
+                        var ansBtn1 = $("<button>").html(ansArr[0]);
+                        ansBtn1.attr("class", "btn btn-primary");
+                        var ansBtn2 = $("<button>").html(ansArr[1]);
+                        ansBtn2.attr("class", "btn btn-primary");
+                        var ansBtn3 = $("<button>").html(ansArr[2]);
+                        ansBtn3.attr("class", "btn btn-primary");
+                        var ansBtn4 = $("<button>").html(ansArr[3]);
+                        ansBtn4.attr("class", "btn btn-primary");
+                        $("#visuals").append(ansBtn1);
+                        $("#visuals").append("<br>");
+                        $("#visuals").append(ansBtn2);
+                        $("#visuals").append("<br>");
+                        $("#visuals").append(ansBtn3);
+                        $("#visuals").append("<br>");
+                        $("#visuals").append(ansBtn4);
+                        $("#visuals").append("<br>");
+                    } else if (res.results[i].type === "boolean") {
+                        var ansBtn1 = $("<button>").html("True");
+                        ansBtn1.attr("class", "btn btn-primary");
+                        var ansBtn2 = $("<button>").html("False");
+                        ansBtn2.attr("class", "btn btn-primary");
+                        $("#visuals").append(ansBtn1);
+                        $("#visuals").append("<br>");
+                        $("#visuals").append(ansBtn2);
+                        $("#visuals").append("<br>");
                     }
+                    $("#visuals").append("<br>");
+                    $("#visuals").append("<hr>");
+                    $("#visuals").append("<br>");
                 }
             }
             else {
