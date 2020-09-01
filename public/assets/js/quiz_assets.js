@@ -86,21 +86,27 @@ $(".categoryBtn").on("click", function() {
     });
     
     function quizAjax(amntNum, catNum, difficulty, type) {
-        var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum + "&difficulty=" + difficulty + "&type=" + type;
+        var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum;
+        if(difficulty){
+            queryURL += "&difficulty=" + difficulty;
+        }
+        if(type){
+            queryURL += "&type=" + type;
+        }
+
         console.log(queryURL)
+        
+        
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
-                // console.log(res);
-                // count++;
-                // console.log(count);
                 console.log(res);
             }
             else {
                 if (amntNum > 0) {
-                    quizAjax(amntNum - 1, catNum, type, difficulty);
+                    quizAjax(amntNum - 1, catNum, difficulty, type);
                 }
             }
         });
