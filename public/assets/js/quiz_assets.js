@@ -102,6 +102,7 @@ $(".categoryBtn").on("click", function() {
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
+                $("#visuals").empty();
                 console.log(res);
                 var ansArr = [];
                 for(var i = 0; i < res.results.length; i++){
