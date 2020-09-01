@@ -5,7 +5,7 @@ const categories = [
     {name: "Entertainment: Music", value: 12},
     {name: "Entertainment: Musicals & Theatres", value: 13},
     {name: "Entertainment: TV", value: 14},
-    {name: "Entertainment: Vvalueeo Games", value: 15},
+    {name: "Entertainment: Video Games", value: 15},
     {name: "Entertainment: Board Games", value: 16},
     {name: "Science & Nature", value: 17},
     {name: "Science: Computers", value: 18},
