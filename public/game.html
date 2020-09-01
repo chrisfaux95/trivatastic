@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Select Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">Quiz Game</a></nav>
+    <main class="container">
+        <form>
+            <div class="form-group">
+                <label for="inputCategory">Category</label>
+                <select id="inputCategory" class="form-control"></select>
+            </div>
+            <div class="form-row">
+                <fieldset class="col">
+                    <legend>Difficulty</legend>
+                    <div id="difficulties"></div>
+                </fieldset>
+                <fieldset class="col">
+                    <legend>Type:</legend>
+                    <div id="types"></div>
+                </fieldset>
+            </div>
+            <button>START</button>
+        </form>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/members.js"></script>
+    <script type="text/javascript" src="./assets/js/quiz_assets.js"></script>
+</body>
+
+</html>
