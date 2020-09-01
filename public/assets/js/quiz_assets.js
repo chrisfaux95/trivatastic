@@ -106,7 +106,8 @@ $(".categoryBtn").on("click", function() {
                 var ansArr = [];
                 for(var i = 0; i < res.results.length; i++){
                     var ansArr = [];
-                    var questionP = $("<p>").html(res.results[i].question);
+                    var questionStr = res.results[i].question;
+                    var questionP = $("<p>").html(questionStr);
                     $("#dump").append(questionP);
                     if(type === "multiple"){
                         ansArr.push(res.results[i].correct_answer);
