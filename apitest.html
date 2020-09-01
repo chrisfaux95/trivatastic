@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <title>'Title'</title>
+</head>
+
+<body>
+
+    <div class="dump">
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // //General Knowledge
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=9&type=multiple",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Books
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=10&type=multiple",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Film
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=11&type=multiple",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Music
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=12&type=multiple",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Television
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=14&type=multiple",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Video Games
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=15&type=multiple",
+        //     method: "GET"
+        // }).then(function(res){
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Board Games
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=16&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Science and Nature
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=17&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Science: Computers
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=18&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Sports
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=21&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Geography
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=22&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //History
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=23&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Animals
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=27&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Vehicles
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=28&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Cartoon & Animation
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=32&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        // //Entertainment: Japanese Anime & Manga
+        // $.ajax({
+        //     url: "https://opentdb.com/api.php?amount=50&category=31&type=multiple",
+        //     method: "GET"
+        // }).then(function (res) {
+        //     console.log(res);
+        // });
+
+        const typeArr = ["multiple", "boolean"];
+        const difficultyArr = ["easy", "medium", "hard"];
+        const MAXAMNT = 50;
+        var count = 0;
+        for (var i = 9; i <= 32; i++) {
+            for (var j = 0; j < typeArr.length; j++) {
+                for (var k = 0; k < difficultyArr.length; k++) {
+                    quizAjax(MAXAMNT, i, j, k, typeArr, difficultyArr);
+                }
+            }
+        }
+
+        function quizAjax(amntNum, i, j, k, typeArr, difficultyArr) {
+            $.ajax({
+                url: "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + i + "&difficulty=" + difficultyArr[k] + "&type=" + typeArr[j],
+                method: "GET"
+            }).then(function (res) {
+                if (res.response_code === 0) {
+                    console.log(res);
+                    count++;
+                    console.log(count);
+                }
+                else {
+                    if (amntNum > 0) {
+                        amntNum--;
+                        quizAjax(amntNum, i, j, k, typeArr, difficultyArr);
+                    }
+                }
+            });
+        }   
+    </script>
+</body>
+
+</html>
