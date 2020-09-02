@@ -207,7 +207,8 @@
   <div class="row">
     <div class="card col-md-3 mx-0" style="width: 18rem;">
       <div class="card-body">
-        <iframe src="https://giphy.com/embed/enqNHfovAzcMPnZjF3" width="300" height="144" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <iframe src="https://giphy.com/embed/enqNHfovAzcMPnZjF3" width="300" height="144" frameBorder="0"
+          class="giphy-embed" allowFullScreen></iframe>
         <hr>
         <h4 class="card-subtitle mb-2 text-muted">Username</h4>
         <hr>
@@ -220,7 +221,7 @@
     <!-- Jumbotron to Display Questions! -->
     <div class="col-md-9">
       <div class="jumbotron jumbotron-fluid mx-0" id="visuals">
-        <form>
+        <form id="category-container">
           <div class="form-group">
             <label for="inputCategory">Category</label>
             <select id="inputCategory" class="form-control"></select>
@@ -237,6 +238,22 @@
           </div>
           <button class="categoryBtn">START</button>
         </form>
+
+        <div class="container">
+          <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+              <button class="btn">Answer 1</button>
+              <button class="btn">Answer 2</button>
+              <button class="btn">Answer 3</button>
+              <button class="btn">Answer 4</button>
+            </div>
+          </div>
+          <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
