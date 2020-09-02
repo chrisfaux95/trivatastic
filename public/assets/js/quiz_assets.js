@@ -169,6 +169,13 @@ $(document).ready(function () {
                 ansBtn1.attr("class", "btn btn-success ansButton");
                 var ansBtn2 = $("<button>").html("False");
                 ansBtn2.attr("class", "btn btn-danger ansButton");
+                if(resArr[index].correct_answer === "True"){
+                    ansBtn1.attr("data", "c");
+                    ansBtn2.attr("data", "i");
+                } else if (resArr[index].correct_answer === "False"){
+                    ansBtn1.attr("data", "i");
+                    ansBtn2.attr("data", "c");
+                }
                 questionContainer.append(ansBtn1, br, ansBtn2, br);
             }
             questionContainer.append("<br>");
