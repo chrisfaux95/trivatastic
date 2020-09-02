@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var index = 0;
     var resArr = [];
+    var correctCount = 0;
     const questionContainer = $("#question-container");
     const categoryContainer = $("#category-container");
     questionContainer.hide();
@@ -88,6 +89,7 @@ $(document).ready(function () {
 
         console.log(category, difficulty, type);
         resArr = [];
+        correctCount = 0;
         quizAjax(MAXAMNT, category, difficulty, type, resArr);
     });
 
