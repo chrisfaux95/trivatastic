@@ -78,5 +78,9 @@ body {
    }
  
  }
- /* Animated Card Background/*
+  /* Animated Card Background */
 
+.card{
+  background-color: transparent;
+
+}
