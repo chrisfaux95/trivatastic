@@ -4,30 +4,34 @@ $(document).ready(() => {
   const signUpForm = $("form.signup");
   const emailInput = $("input#email-input");
   const passwordInput = $("input#password-input");
+  const usernameInput = $("input#username-input");
 
   // When the signup button is clicked, we validate the email and password are not blank
   signUpForm.on("submit", event => {
     event.preventDefault();
     const userData = {
       email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+      password: passwordInput.val().trim(),
+      username: usernameInput.val().trim()
     };
 
-    if (!userData.email || !userData.password) {
+    if (!userData.email || !userData.password || !userData.username) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
+    signUpUser(userData);
     emailInput.val("");
     passwordInput.val("");
+    usernameInput.val("");
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, password) {
+  function signUpUser(input) {
     $.post("/api/signup", {
-      email: email,
-      password: password
+      email: input.email,
+      password: input.password,
+      username: input.username
     })
       .then(() => {
         window.location.replace("/members");
@@ -37,7 +41,7 @@ $(document).ready(() => {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
+    $("#alert .msg").text(JSON.stringify(err));
     $("#alert").fadeIn(500);
   }
 });
