@@ -91,7 +91,7 @@ $(document).ready(function () {
         quizAjax(MAXAMNT, category, difficulty, type, resArr);
     });
 
-    $(".ansButton").on("click", function(){
+    $(document).on("click", "button.ansButton", function(){
         console.log("button was clicked");
         index++;
         showQuestion(resArr, index);
