@@ -135,7 +135,6 @@ $(document).ready(function () {
         questionContainer.append("<br>");
 
         console.log(res);
-        var ansArr = [];
         for (var i = 0; i < res.results.length; i++) {
             var ansArr = [];
             var questionStr = res.results[i].question;
