@@ -138,6 +138,7 @@ $(document).ready(function () {
     }
 
     function showQuestion(resArr, index) {
+        questionContainer.empty();
         questionContainer.show();
         catH = $("<h1>").html(resArr[index].category);
         questionContainer.append(catH);
