@@ -134,27 +134,25 @@ $(document).ready(function () {
         questionContainer.append("<hr>");
         questionContainer.append("<br>");
 
-        console.log(res);
-        
-            var ansArr = [];
-            var questionStr = res.results[i].question;
-            var questionP = $("<h4>").html(questionStr);
-            $("#visuals").append(questionP);
-            if (res.results[i].type === "multiple") {
-                ansArr = [...res.results[i].incorrect_answers, res.results[i].correct_answer]
-                shuffleArray(ansArr);
-                ansArr.forEach(e => {
-                    let ansBtn = $("<button>").html(e).addClass("btn btn-primary")
-                    $("#visuals").append(ansBtn, br);
-                });
-            } else if (res.results[i].type === "boolean") {
-                var ansBtn1 = $("<button>").html("True");
-                ansBtn1.attr("class", "btn btn-success");
-                var ansBtn2 = $("<button>").html("False");
-                ansBtn2.attr("class", "btn btn-danger");
-                $("#visuals").append(ansBtn1, br, ansBtn2, br);
-            }
-            $("#visuals").append("<br>");
+        var ansArr = [];
+        var questionStr = res.results[0].question;
+        var questionP = $("<h4>").html(questionStr);
+        questionContainer.append(questionP);
+        // if (res.results[i].type === "multiple") {
+        //     ansArr = [...res.results[i].incorrect_answers, res.results[i].correct_answer]
+        //     shuffleArray(ansArr);
+        //     ansArr.forEach(e => {
+        //         let ansBtn = $("<button>").html(e).addClass("btn btn-primary")
+        //         $("#visuals").append(ansBtn, br);
+        //     });
+        // } else if (res.results[i].type === "boolean") {
+        //     var ansBtn1 = $("<button>").html("True");
+        //     ansBtn1.attr("class", "btn btn-success");
+        //     var ansBtn2 = $("<button>").html("False");
+        //     ansBtn2.attr("class", "btn btn-danger");
+        //     $("#visuals").append(ansBtn1, br, ansBtn2, br);
+        // }
+        // $("#visuals").append("<br>");
     }
 
 });
