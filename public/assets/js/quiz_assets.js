@@ -1,6 +1,8 @@
 $(document).ready(function () {
-    const questionContainer = $("#question-container")
+    const questionContainer = $("#question-container");
+    const categoryContainer = $("#category-container");
     questionContainer.hide();
+    categoryContainer.show();
     const br = "<br>";
 
     const categories = [
