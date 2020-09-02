@@ -19,13 +19,13 @@ module.exports = (app) => {
         }).then((dbScore) => res.json(dbScore));
     });
 
+    //API call to grab scores by category id
     app.get("/api/scores/by_category/:cat", (req, res) => {
         db.Score.findAll({
             include: [db.User],
             where: { CategoryId: req.params.cat }
         }).then((dbScore) => res.json(dbScore));
     })
-
 
 
 
