@@ -87,22 +87,18 @@ $(document).ready(function () {
         const type = $("input[type='radio'][name='typeRadios']:checked").val();
         const MAXAMNT = 50;
 
-        console.log(category, difficulty, type);
         resArr = [];
         correctCount = 0;
         quizAjax(MAXAMNT, category, difficulty, type, resArr);
     });
 
     $(document).on("click", "button.ansButton", function () {
-        console.log("button was clicked");
         index++;
-        showQuestion(resArr, index);
         var answer = parseInt($(this).attr("data"));
-        console.log(answer);
-        console.log(typeof answer);
         if(answer === 1){
             correctCount++;
         }
+        showQuestion(resArr, index);
     })
 
     function quizAjax(amntNum, catNum, difficulty, type, resArr) {
@@ -114,22 +110,19 @@ $(document).ready(function () {
             queryURL += "&type=" + type;
         }
 
-        console.log(queryURL)
-
-
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
                 resArr.push(...res.results);
-                console.log(resArr);
+                shuffleArray(resArr);
                 categoryContainer.hide();
                 showQuestion(resArr, index);
             }
             else {
                 if (amntNum > 0) {
-                    quizAjax(amntNum - 1, catNum, difficulty, type);
+                    quizAjax(amntNum - 1, catNum, difficulty, type, resArr);
                 }
             }
         });
