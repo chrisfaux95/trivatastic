@@ -12,12 +12,22 @@ module.exports = (app) => {
     });
 
     //API call to grab scores by User
-    app.get("/api/scores/:username", (req, res) => {
+    app.get("/api/scores/by_user/:username", (req, res) => {
         db.Score.findAll({
             include: [db.User, db.Category],
             where: { username: req.params.username }
         }).then((dbScore) => res.json(dbScore));
     });
+
+    app.get("/api/scores/by_category/:cat", (req, res) => {
+        db.Score.findAll({
+            include: [db.User],
+            where: { CategoryId: req.params.cat }
+        }).then((dbScore) => res.json(dbScore));
+    })
+
+
+
 
     //API call to push new scores
     app.post("/api/score", (req, res) => {
