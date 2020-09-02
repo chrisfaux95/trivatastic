@@ -122,6 +122,8 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
+                console.log(resArr);
+                console.log(res.results);
                 resArr.push(...res.results);
                 console.log(resArr);
                 categoryContainer.hide();
@@ -129,7 +131,7 @@ $(document).ready(function () {
             }
             else {
                 if (amntNum > 0) {
-                    quizAjax(amntNum - 1, catNum, difficulty, type);
+                    quizAjax(amntNum - 1, catNum, difficulty, type, resArr);
                 }
             }
         });
