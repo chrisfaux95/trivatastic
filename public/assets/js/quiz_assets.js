@@ -186,7 +186,7 @@ $(document).ready(function () {
             }
             questionContainer.append("<br>");
         } else {
-            $("#score").text(correctCount);
+            $("#score").text("Score: " + correctCount);
         }
     }
 
