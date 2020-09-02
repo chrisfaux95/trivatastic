@@ -151,6 +151,7 @@ $(document).ready(function () {
             var questionStr = resArr[index].question;
             var questionP = $("<h4>").html(questionStr);
             questionContainer.append(questionP);
+            questionContainer.append("<br>");
             if (resArr[index].type === "multiple") {
                 ansArr = [...resArr[index].incorrect_answers, resArr[index].correct_answer]
                 shuffleArray(ansArr);
