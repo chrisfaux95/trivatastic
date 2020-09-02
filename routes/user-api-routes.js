@@ -2,7 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -54,7 +54,21 @@ module.exports = function(app) {
   });
 
   // API CALL TO GRAB LIST OF ALL USERS
-  app.get("/api/users", (req,res) => {
-    db.User.findAll({attributes: ['username']}).then((dbUser) => {res.json(dbUser)});
+  app.get("/api/users", (req, res) => {
+    db.User.findAll({
+      attributes: ['username']
+    }).then((dbUser) => {
+      res.json(dbUser);
+    });
   });
+
+  // API CALL TO GRAB USERNAME BY ID NUMBER
+  app.get("/api/user/:id", (req, res) => {
+    db.User.findOne({
+      attributes: ['username'],
+      where: { id: req.params.id }
+    }).then((dbUser) => {
+      res.json(dbUser);
+    })
+  })
 };
