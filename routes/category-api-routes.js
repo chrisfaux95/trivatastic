@@ -1,4 +1,4 @@
-const db = requier("../models");
+const db = require("../models");
 module.exports = (app) => {
     // API CALL TO GET LIST OF CATEGORIES
     app.get("/api/categories", (req, res) => {
