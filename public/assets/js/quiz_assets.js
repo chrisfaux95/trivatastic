@@ -87,9 +87,15 @@ $(document).ready(function () {
         const MAXAMNT = 50;
 
         console.log(category, difficulty, type);
-        var resArr = [];
+        resArr = [];
         quizAjax(MAXAMNT, category, difficulty, type, resArr);
     });
+
+    $(".ansButton").on("click", function(){
+        console.log("button was clicked");
+        index++;
+        showQuestion(resArr, index);
+    })
 
     function quizAjax(amntNum, catNum, difficulty, type, resArr) {
         var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum;
