@@ -107,7 +107,7 @@ $(document).ready(function () {
         }).then(function (res) {
             if (res.response_code === 0) {
                 categoryContainer.hide();
-                showQuestion(res);
+                showQuestion(res, 0);
             }
             else {
                 if (amntNum > 0) {
@@ -127,25 +127,25 @@ $(document).ready(function () {
         }
     }
 
-    function showQuestion(res) {
+    function showQuestion(res, index) {
         questionContainer.show();
-        catH = $("<h1>").html(res.results[0].category);
+        catH = $("<h1>").html(res.results[index].category);
         questionContainer.append(catH);
         questionContainer.append("<hr>");
         questionContainer.append("<br>");
 
         var ansArr = [];
-        var questionStr = res.results[0].question;
+        var questionStr = res.results[index].question;
         var questionP = $("<h4>").html(questionStr);
         questionContainer.append(questionP);
-        if (res.results[0].type === "multiple") {
-            ansArr = [...res.results[0].incorrect_answers, res.results[0].correct_answer]
+        if (res.results[index].type === "multiple") {
+            ansArr = [...res.results[index].incorrect_answers, res.results[index].correct_answer]
             shuffleArray(ansArr);
             ansArr.forEach(e => {
                 let ansBtn = $("<button>").html(e).addClass("btn btn-primary")
                 questionContainer.append(ansBtn, br);
             });
-        } else if (res.results[i].type === "boolean") {
+        } else if (res.results[index].type === "boolean") {
             var ansBtn1 = $("<button>").html("True");
             ansBtn1.attr("class", "btn btn-success");
             var ansBtn2 = $("<button>").html("False");
