@@ -108,7 +108,7 @@ $(".categoryBtn").on("click", function() {
                 $("#heading").append(catH);
                 console.log(res);
                 var ansArr = [];
-                for(var i = 0; i < res.results.length; i++){
+                for(var i = 0; i < 1; i++){
                     var ansArr = [];
                     var questionStr = res.results[i].question;
                     var questionP = $("<h4>").html(questionStr);
