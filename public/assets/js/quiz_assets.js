@@ -96,13 +96,12 @@ $(document).ready(function () {
     $(document).on("click", "button.ansButton", function () {
         console.log("button was clicked");
         index++;
-        showQuestion(resArr, index);
         var answer = parseInt($(this).attr("data"));
-        console.log(answer);
-        console.log(typeof answer);
         if(answer === 1){
             correctCount++;
+            console.log(correctCount);
         }
+        showQuestion(resArr, index);
     })
 
     function quizAjax(amntNum, catNum, difficulty, type, resArr) {
@@ -122,10 +121,7 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
-                console.log(resArr);
-                console.log(res.results);
                 resArr.push(...res.results);
-                console.log(resArr);
                 categoryContainer.hide();
                 showQuestion(resArr, index);
             }
