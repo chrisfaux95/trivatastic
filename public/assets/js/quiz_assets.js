@@ -187,6 +187,11 @@ $(document).ready(function () {
             questionContainer.append("<br>");
         } else {
             $("#score").text("Score: " + correctCount);
+            questionContainer.hide();
+            var finishH = $("<h1>").text("Quiz over!");
+            var hr = $("<hr>");
+            $("#finalContainer").append(finishH, br, hr, br);
+            $("#finalContainer").show();
         }
     }
 
