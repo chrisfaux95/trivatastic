@@ -97,6 +97,9 @@ $(document).ready(function () {
         console.log("button was clicked");
         index++;
         showQuestion(resArr, index);
+        var answer = $(this).attr("data");
+        console.log(answer);
+        console.log(typeof answer);
     })
 
     function quizAjax(amntNum, catNum, difficulty, type, resArr) {
