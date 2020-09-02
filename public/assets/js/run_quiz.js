@@ -82,7 +82,7 @@ function renderCounter(){
     else{
         count = 10;
         // change progress color to red
-        answerIsWrong();
+        // answerIsWrong();
         if(runningQuestion < lastQuestion){
             runningQuestion++;
             renderQuestion();
