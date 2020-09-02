@@ -135,7 +135,7 @@ $(document).ready(function () {
         questionContainer.append("<br>");
 
         console.log(res);
-        for (var i = 0; i < res.results.length; i++) {
+        
             var ansArr = [];
             var questionStr = res.results[i].question;
             var questionP = $("<h4>").html(questionStr);
@@ -155,7 +155,6 @@ $(document).ready(function () {
                 $("#visuals").append(ansBtn1, br, ansBtn2, br);
             }
             $("#visuals").append("<br>");
-        }
     }
 
 });
