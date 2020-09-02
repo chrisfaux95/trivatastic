@@ -140,6 +140,7 @@ $(document).ready(function () {
     }
 
     function showQuestion(resArr, index) {
+        if(index < resArr.length){
         questionContainer.empty();
         questionContainer.show();
         catH = $("<h1>").html(resArr[index].category);
@@ -166,6 +167,7 @@ $(document).ready(function () {
             questionContainer.append(ansBtn1, br, ansBtn2, br);
         }
         questionContainer.append("<br>");
+        }
     }
 
 });
