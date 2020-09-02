@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    var index = 0;
+    var resArr = [];
     const questionContainer = $("#question-container");
     const categoryContainer = $("#category-container");
     questionContainer.hide();
@@ -86,7 +88,7 @@ $(document).ready(function () {
 
         console.log(category, difficulty, type);
 
-        quizAjax(MAXAMNT, category, difficulty, type)
+        quizAjax(MAXAMNT, category, difficulty, type);
     });
 
     function quizAjax(amntNum, catNum, difficulty, type) {
@@ -106,8 +108,10 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
+                resArr.push(...res.results);
+                console.log(resArr);
                 categoryContainer.hide();
-                showQuestion(res, 0);
+                showQuestion(resArr, index);
             }
             else {
                 if (amntNum > 0) {
@@ -127,25 +131,25 @@ $(document).ready(function () {
         }
     }
 
-    function showQuestion(res, index) {
+    function showQuestion(resArr, index) {
         questionContainer.show();
-        catH = $("<h1>").html(res.results[index].category);
+        catH = $("<h1>").html(resArr[index].category);
         questionContainer.append(catH);
         questionContainer.append("<hr>");
         questionContainer.append("<br>");
 
         var ansArr = [];
-        var questionStr = res.results[index].question;
+        var questionStr = resArr[index].question;
         var questionP = $("<h4>").html(questionStr);
         questionContainer.append(questionP);
-        if (res.results[index].type === "multiple") {
-            ansArr = [...res.results[index].incorrect_answers, res.results[index].correct_answer]
+        if (resArr[index].type === "multiple") {
+            ansArr = [...resArr[index].incorrect_answers, resArr[index].correct_answer]
             shuffleArray(ansArr);
             ansArr.forEach(e => {
                 let ansBtn = $("<button>").html(e).addClass("btn btn-primary ansButton")
                 questionContainer.append(ansBtn, br);
             });
-        } else if (res.results[index].type === "boolean") {
+        } else if (resArr[index].type === "boolean") {
             var ansBtn1 = $("<button>").html("True");
             ansBtn1.attr("class", "btn btn-success ansButton");
             var ansBtn2 = $("<button>").html("False");
