@@ -106,11 +106,12 @@ $(document).ready(function () {
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
-                $("#visuals").empty();
+                categoryContainer.hide();
+                questionContainer.show();
                 catH = $("<h1>").html(res.results[0].category);
-                $("#visuals").append(catH);
-                $("#visuals").append("<hr>");
-                $("#visuals").append("<br>");
+                questionContainer.append(catH);
+                questionContainer.append("<hr>");
+                questionContainer.append("<br>");
 
                 console.log(res);
                 var ansArr = [];
