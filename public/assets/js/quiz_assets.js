@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var index = 0;
     var resArr = [];
+    var correctCount = 0;
     const questionContainer = $("#question-container");
     const categoryContainer = $("#category-container");
     questionContainer.hide();
@@ -88,13 +89,20 @@ $(document).ready(function () {
 
         console.log(category, difficulty, type);
         resArr = [];
+        correctCount = 0;
         quizAjax(MAXAMNT, category, difficulty, type, resArr);
     });
 
-    $(document).on("click", "button.ansButton", function(){
+    $(document).on("click", "button.ansButton", function () {
         console.log("button was clicked");
         index++;
         showQuestion(resArr, index);
+        var answer = parseInt($(this).attr("data"));
+        console.log(answer);
+        console.log(typeof answer);
+        if(answer === 1){
+            correctCount++;
+        }
     })
 
     function quizAjax(amntNum, catNum, difficulty, type, resArr) {
@@ -138,32 +146,53 @@ $(document).ready(function () {
     }
 
     function showQuestion(resArr, index) {
-        questionContainer.empty();
-        questionContainer.show();
-        catH = $("<h1>").html(resArr[index].category);
-        questionContainer.append(catH);
-        questionContainer.append("<hr>");
-        questionContainer.append("<br>");
+        if (index < resArr.length) {
+            questionContainer.empty();
+            questionContainer.show();
+            catH = $("<h1>").html(resArr[index].category);
+            questionContainer.append(catH);
+            questionContainer.append("<hr>");
+            questionContainer.append("<br>");
 
-        var ansArr = [];
-        var questionStr = resArr[index].question;
-        var questionP = $("<h4>").html(questionStr);
-        questionContainer.append(questionP);
-        if (resArr[index].type === "multiple") {
-            ansArr = [...resArr[index].incorrect_answers, resArr[index].correct_answer]
-            shuffleArray(ansArr);
-            ansArr.forEach(e => {
-                let ansBtn = $("<button>").html(e).addClass("btn btn-primary ansButton")
-                questionContainer.append(ansBtn, br);
-            });
-        } else if (resArr[index].type === "boolean") {
-            var ansBtn1 = $("<button>").html("True");
-            ansBtn1.attr("class", "btn btn-success ansButton");
-            var ansBtn2 = $("<button>").html("False");
-            ansBtn2.attr("class", "btn btn-danger ansButton");
-            questionContainer.append(ansBtn1, br, ansBtn2, br);
+            var ansArr = [];
+            var questionStr = resArr[index].question;
+            var questionP = $("<h4>").html(questionStr);
+            questionContainer.append(questionP);
+            if (resArr[index].type === "multiple") {
+                ansArr = [...resArr[index].incorrect_answers, resArr[index].correct_answer]
+                shuffleArray(ansArr);
+                ansArr.forEach(e => {
+                    let ansBtn = $("<button>").html(e).addClass("btn btn-primary ansButton");
+                    if(e === resArr[index].correct_answer){
+                        ansBtn.attr("data", 1);
+                    } else {
+                        ansBtn.attr("data", 0);
+                    }
+                    questionContainer.append(ansBtn, br);
+                });
+            } else if (resArr[index].type === "boolean") {
+                var ansBtn1 = $("<button>").html("True");
+                ansBtn1.attr("class", "btn btn-success ansButton");
+                var ansBtn2 = $("<button>").html("False");
+                ansBtn2.attr("class", "btn btn-danger ansButton");
+                if(resArr[index].correct_answer === "True"){
+                    ansBtn1.attr("data", 1);
+                    ansBtn2.attr("data", 0);
+                } else if (resArr[index].correct_answer === "False"){
+                    ansBtn1.attr("data", 0);
+                    ansBtn2.attr("data", 1);
+                }
+                questionContainer.append(ansBtn1, br, ansBtn2, br);
+            }
+            questionContainer.append("<br>");
+        } else {
+            $("#score").text("Score: " + correctCount);
+            questionContainer.hide();
+            var finishH = $("<h1>").text("Quiz over!");
+            var hr = $("<hr>");
+            $("#finalContainer").append(finishH, br, hr, br);
+            $("#finalContainer").show();
         }
-        questionContainer.append("<br>");
     }
 
 });
