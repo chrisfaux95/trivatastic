@@ -16,7 +16,6 @@ module.exports = (app) => {
         })
     })
 
-
     // API CALL TO GET CATEGORY BY CATEGORY NAME
     app.get("/api/category_by_name/:name", (req, res) => {
         db.Category.findOne({
