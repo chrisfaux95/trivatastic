@@ -97,7 +97,7 @@ $(document).ready(function () {
         console.log("button was clicked");
         index++;
         showQuestion(resArr, index);
-        var answer = $(this).attr("data");
+        var answer = parseInt($(this).attr("data"));
         console.log(answer);
         console.log(typeof answer);
     })
@@ -161,9 +161,9 @@ $(document).ready(function () {
                 ansArr.forEach(e => {
                     let ansBtn = $("<button>").html(e).addClass("btn btn-primary ansButton");
                     if(e === resArr[index].correct_answer){
-                        ansBtn.attr("data", "c");
+                        ansBtn.attr("data", 1);
                     } else {
-                        ansBtn.attr("data", "i");
+                        ansBtn.attr("data", 0);
                     }
                     questionContainer.append(ansBtn, br);
                 });
@@ -173,11 +173,11 @@ $(document).ready(function () {
                 var ansBtn2 = $("<button>").html("False");
                 ansBtn2.attr("class", "btn btn-danger ansButton");
                 if(resArr[index].correct_answer === "True"){
-                    ansBtn1.attr("data", "c");
-                    ansBtn2.attr("data", "i");
+                    ansBtn1.attr("data", 1);
+                    ansBtn2.attr("data", 0);
                 } else if (resArr[index].correct_answer === "False"){
-                    ansBtn1.attr("data", "i");
-                    ansBtn2.attr("data", "c");
+                    ansBtn1.attr("data", 0);
+                    ansBtn2.attr("data", 1);
                 }
                 questionContainer.append(ansBtn1, br, ansBtn2, br);
             }
