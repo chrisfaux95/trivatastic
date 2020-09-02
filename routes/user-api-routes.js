@@ -55,6 +55,6 @@ module.exports = function(app) {
 
   // API CALL TO GRAB LIST OF ALL USERS
   app.get("/api/users", (req,res) => {
-    db.User.findAll({attributes: {include: 'username'}}).then((dbUser) => {res.json(dbUser)});
+    db.User.findAll({attributes: ['username']}).then((dbUser) => {res.json(dbUser)});
   });
 };
