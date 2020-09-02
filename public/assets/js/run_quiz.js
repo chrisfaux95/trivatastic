@@ -3,6 +3,20 @@ const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
 const answerButtonsElement = document.getElementById('answer-buttons')
+const counter = document.getElementById("counter");
+const timeGauge = document.getElementById("timeGauge");
+const progress = document.getElementById("progress");
+const scoreDiv = document.getElementById("scoreContainer");
+
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+let count = 10;
+const questionTime = 20; // 10s
+const gaugeWidth = 150; // 150px
+const gaugeUnit = gaugeWidth / questionTime;
+let TIMER;
+let score = 0;
+
 
 let shuffledQuestions, currentQuestionIndex
 
@@ -18,6 +32,37 @@ function startGame() {
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
   setNextQuestion()
+  renderProgress()
+  renderCounter()
+  TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+}
+
+function renderCounter(){
+    counter.innerHTML = count;
+    timeGauge.style.width = count * gaugeUnit + "px";
+    
+    if(count >0){
+        count--
+    }
+    else{
+        count = 10;
+        // change progress color to red
+        answerIsWrong();
+        if(runningQuestion < lastQuestion){
+            runningQuestion++;
+            renderQuestion();
+        }else{
+            // end the quiz and show the score
+            clearInterval(TIMER);
+            scoreRender();
+        }
+    }
+}
+
+function renderProgress(){
+    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
+        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+    }
 }
 
 function setNextQuestion() {
@@ -75,6 +120,10 @@ function clearStatusClass(element) {
   element.classList.remove('correct')
   element.classList.remove('wrong')
 }
+
+
+
+
 
 const questions = [
   {
