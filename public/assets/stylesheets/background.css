@@ -78,5 +78,9 @@ body {
    }
  
  }
- /* Animated Card Background/*
+  /* Animated Card Background */
 
+.card-title{
+  
+  background-image: url('https://media.giphy.com/media/enqNHfovAzcMPnZjF3/giphy.gif')
+}
