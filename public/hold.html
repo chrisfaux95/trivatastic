@@ -207,7 +207,8 @@
   <div class="row">
     <div class="card col-md-3 mx-0" style="width: 18rem;">
       <div class="card-body">
-        <iframe src="https://giphy.com/embed/enqNHfovAzcMPnZjF3" width="300" height="144" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <iframe src="https://giphy.com/embed/enqNHfovAzcMPnZjF3" width="300" height="144" frameBorder="0"
+          class="giphy-embed" allowFullScreen></iframe>
         <hr>
         <h4 class="card-subtitle mb-2 text-muted">Username</h4>
         <hr>
@@ -219,15 +220,16 @@
 
     <!-- Jumbotron to Display Questions! -->
     <div class="col-md-9">
-      <div class="jumbotron jumbotron-fluid mx-0" id="visuals">
-        <form>
+      <div class="jumbotron jumbotron-fluid mx-0">
+        
+        <form id="category-container">
           <div class="form-group">
             <label for="inputCategory">Category</label>
             <select id="inputCategory" class="form-control"></select>
           </div>
           <div class="form-row">
             <fieldset class="col">
-              <legend>Difficulty</legend>
+              <legend>Difficulty:</legend>
               <div id="difficulties"></div>
             </fieldset>
             <fieldset class="col">
@@ -237,6 +239,19 @@
           </div>
           <button class="categoryBtn">START</button>
         </form>
+
+        <div id="question-container">
+          <!-- <div id="question">Question</div> -->
+          <!-- <div id="answer-buttons" class="btn-grid"> -->
+            <!-- <button class="btn btn-1 ansButton"></button>
+            <button class="btn btn-2 ansButton"></button>
+            <button class="btn btn-3 ansButton"></button>
+            <button class="btn btn-4 ansButton"></button> -->
+          <!-- </div> -->
+          <!-- <div class="controls">
+            <button id="next-btn" class="next-btn btn">Next</button>
+          </div> -->
+        </div>
       </div>
     </div>
   </div>
