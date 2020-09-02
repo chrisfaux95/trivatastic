@@ -100,6 +100,9 @@ $(document).ready(function () {
         var answer = parseInt($(this).attr("data"));
         console.log(answer);
         console.log(typeof answer);
+        if(answer === 1){
+            correctCount++;
+        }
     })
 
     function quizAjax(amntNum, catNum, difficulty, type, resArr) {
@@ -182,6 +185,8 @@ $(document).ready(function () {
                 questionContainer.append(ansBtn1, br, ansBtn2, br);
             }
             questionContainer.append("<br>");
+        } else {
+            $("#score").text(correctCount);
         }
     }
 
