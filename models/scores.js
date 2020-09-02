@@ -1,8 +1,8 @@
 // HELP ME
 module.exports = function(sequelize, DataTypes) {
-    var Score = sequelize.define("Scores", {
+    var Score = sequelize.define("Score", {
         score: {
-            type: DataTypes.NUMBER,
+            type: DataTypes.INTEGER,
             allowNull: false
         }
     });
