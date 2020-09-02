@@ -102,10 +102,11 @@ $(".categoryBtn").on("click", function() {
         }).then(function (res) {
             if (res.response_code === 0) {
                 $("#visuals").empty();
+                catH = $("<h1>").html(res.results[0].category);
+                $("#visuals").append(catH);
                 $("#visuals").append("<hr>");
                 $("#visuals").append("<br>");
-                catH = $("<h1>").html(res.results[0].category);
-                $("#heading").append(catH);
+                
                 console.log(res);
                 var ansArr = [];
                 for(var i = 0; i < 1; i++){
