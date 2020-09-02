@@ -87,19 +87,16 @@ $(document).ready(function () {
         const type = $("input[type='radio'][name='typeRadios']:checked").val();
         const MAXAMNT = 50;
 
-        console.log(category, difficulty, type);
         resArr = [];
         correctCount = 0;
         quizAjax(MAXAMNT, category, difficulty, type, resArr);
     });
 
     $(document).on("click", "button.ansButton", function () {
-        console.log("button was clicked");
         index++;
         var answer = parseInt($(this).attr("data"));
         if(answer === 1){
             correctCount++;
-            console.log(correctCount);
         }
         showQuestion(resArr, index);
     })
@@ -113,15 +110,13 @@ $(document).ready(function () {
             queryURL += "&type=" + type;
         }
 
-        console.log(queryURL)
-
-
         $.ajax({
             url: queryURL,
             method: "GET"
         }).then(function (res) {
             if (res.response_code === 0) {
                 resArr.push(...res.results);
+                shuffleArray(resArr);
                 categoryContainer.hide();
                 showQuestion(resArr, index);
             }
