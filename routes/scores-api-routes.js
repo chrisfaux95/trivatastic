@@ -22,7 +22,7 @@ module.exports = (app) => {
     //API call to push new scores
     app.post("/api/score", (req, res) => {
         // console.log("POSTING SCORES");
-        db.Score.create(req.body).then(dbScore => res.json(dbScore))
+        db.Score.create(req.body).then(dbScore => res.json(dbScore));
 
     });
 
