@@ -81,6 +81,13 @@ body {
   /* Animated Card Background */
 
 .card{
-  background-color: transparent;
+  background-color: opacity;
 
+}
+
+/* Button Design */
+.btn{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
 }
