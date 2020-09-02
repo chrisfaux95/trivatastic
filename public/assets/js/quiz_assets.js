@@ -142,14 +142,14 @@ $(document).ready(function () {
             ansArr = [...res.results[index].incorrect_answers, res.results[index].correct_answer]
             shuffleArray(ansArr);
             ansArr.forEach(e => {
-                let ansBtn = $("<button>").html(e).addClass("btn btn-primary")
+                let ansBtn = $("<button>").html(e).addClass("btn btn-primary ansButton")
                 questionContainer.append(ansBtn, br);
             });
         } else if (res.results[index].type === "boolean") {
             var ansBtn1 = $("<button>").html("True");
-            ansBtn1.attr("class", "btn btn-success");
+            ansBtn1.attr("class", "btn btn-success ansButton");
             var ansBtn2 = $("<button>").html("False");
-            ansBtn2.attr("class", "btn btn-danger");
+            ansBtn2.attr("class", "btn btn-danger ansButton");
             questionContainer.append(ansBtn1, br, ansBtn2, br);
         }
         questionContainer.append("<br>");
