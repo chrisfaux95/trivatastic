@@ -62,43 +62,43 @@ nextButton.addEventListener('click', () => {
 })
 
 function startGame() {
-  startButton.classList.add('hide')
-  shuffledQuestions = questions.sort(() => Math.random() - .5)
-  currentQuestionIndex = 0
-  questionContainerElement.classList.remove('hide')
+  // startButton.classList.add('hide')
+  // shuffledQuestions = questions.sort(() => Math.random() - .5)
+  // currentQuestionIndex = 0
+  // questionContainerElement.classList.remove('hide')
   setNextQuestion()
-  renderProgress()
-  renderCounter()
-  TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+  // renderProgress()
+  // renderCounter()
+  // TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
-function renderCounter(){
-    counter.innerHTML = count;
-    timeGauge.style.width = count * gaugeUnit + "px";
+// function renderCounter(){
+//     counter.innerHTML = count;
+//     timeGauge.style.width = count * gaugeUnit + "px";
     
-    if(count >0){
-        count--
-    }
-    else{
-        count = 10;
-        // change progress color to red
-        // answerIsWrong();
-        if(runningQuestion < lastQuestion){
-            runningQuestion++;
-            renderQuestion();
-        }else{
-            // end the quiz and show the score
-            clearInterval(TIMER);
-            scoreRender();
-        }
-    }
-}
+//     if(count >0){
+//         count--
+//     }
+//     else{
+//         count = 10;
+//         // change progress color to red
+//         // answerIsWrong();
+//         if(runningQuestion < lastQuestion){
+//             runningQuestion++;
+//             renderQuestion();
+//         }else{
+//             // end the quiz and show the score
+//             clearInterval(TIMER);
+//             scoreRender();
+//         }
+//     }
+// }
 
-function renderProgress(){
-    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
-        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
-    }
-}
+// function renderProgress(){
+//     for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
+//         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+//     }
+// }
 
 function setNextQuestion() {
   resetState()

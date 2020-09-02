@@ -107,35 +107,7 @@ $(document).ready(function () {
         }).then(function (res) {
             if (res.response_code === 0) {
                 categoryContainer.hide();
-                questionContainer.show();
-                catH = $("<h1>").html(res.results[0].category);
-                questionContainer.append(catH);
-                questionContainer.append("<hr>");
-                questionContainer.append("<br>");
-
-                console.log(res);
-                var ansArr = [];
-                for (var i = 0; i < res.results.length; i++) {
-                    var ansArr = [];
-                    var questionStr = res.results[i].question;
-                    var questionP = $("<h4>").html(questionStr);
-                    $("#visuals").append(questionP);
-                    if (res.results[i].type === "multiple") {
-                        ansArr = [...res.results[i].incorrect_answers, res.results[i].correct_answer]
-                        shuffleArray(ansArr);
-                        ansArr.forEach(e => {
-                            let ansBtn = $("<button>").html(e).addClass("btn btn-primary")
-                            $("#visuals").append(ansBtn, br);
-                        });
-                    } else if (res.results[i].type === "boolean") {
-                        var ansBtn1 = $("<button>").html("True");
-                        ansBtn1.attr("class", "btn btn-success");
-                        var ansBtn2 = $("<button>").html("False");
-                        ansBtn2.attr("class", "btn btn-danger");
-                        $("#visuals").append(ansBtn1, br, ansBtn2, br);
-                    }
-                    $("#visuals").append("<br>");
-                }
+                showQuestion(res);
             }
             else {
                 if (amntNum > 0) {
@@ -154,4 +126,37 @@ $(document).ready(function () {
             [array[i], array[j]] = [array[j], array[i]];
         }
     }
+
+    function showQuestion(res) {
+        questionContainer.show();
+        catH = $("<h1>").html(res.results[0].category);
+        questionContainer.append(catH);
+        questionContainer.append("<hr>");
+        questionContainer.append("<br>");
+
+        console.log(res);
+        var ansArr = [];
+        for (var i = 0; i < res.results.length; i++) {
+            var ansArr = [];
+            var questionStr = res.results[i].question;
+            var questionP = $("<h4>").html(questionStr);
+            $("#visuals").append(questionP);
+            if (res.results[i].type === "multiple") {
+                ansArr = [...res.results[i].incorrect_answers, res.results[i].correct_answer]
+                shuffleArray(ansArr);
+                ansArr.forEach(e => {
+                    let ansBtn = $("<button>").html(e).addClass("btn btn-primary")
+                    $("#visuals").append(ansBtn, br);
+                });
+            } else if (res.results[i].type === "boolean") {
+                var ansBtn1 = $("<button>").html("True");
+                ansBtn1.attr("class", "btn btn-success");
+                var ansBtn2 = $("<button>").html("False");
+                ansBtn2.attr("class", "btn btn-danger");
+                $("#visuals").append(ansBtn1, br, ansBtn2, br);
+            }
+            $("#visuals").append("<br>");
+        }
+    }
+
 });
