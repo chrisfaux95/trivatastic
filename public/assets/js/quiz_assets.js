@@ -151,11 +151,12 @@ $(document).ready(function () {
             var questionStr = resArr[index].question;
             var questionP = $("<h4>").html(questionStr);
             questionContainer.append(questionP);
+            questionContainer.append("<br>");
             if (resArr[index].type === "multiple") {
                 ansArr = [...resArr[index].incorrect_answers, resArr[index].correct_answer]
                 shuffleArray(ansArr);
                 ansArr.forEach(e => {
-                    let ansBtn = $("<button>").html(e).addClass("btn btn-primary ansButton");
+                    let ansBtn = $("<button>").html(e).addClass("btn-hover color-3 ansButton");
                     if(e === resArr[index].correct_answer){
                         ansBtn.attr("data", 1);
                     } else {

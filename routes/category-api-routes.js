@@ -1,4 +1,4 @@
-const db = requier("../models");
+const db = require("../models");
 module.exports = (app) => {
     // API CALL TO GET LIST OF CATEGORIES
     app.get("/api/categories", (req, res) => {
@@ -15,7 +15,6 @@ module.exports = (app) => {
             res.json(dbCategory);
         })
     })
-
 
     // API CALL TO GET CATEGORY BY CATEGORY NAME
     app.get("/api/category_by_name/:name", (req, res) => {

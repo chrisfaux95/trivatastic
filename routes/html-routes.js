@@ -5,7 +5,7 @@ const path = require("path");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-  
+
   app.get("/", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
@@ -34,4 +34,14 @@ module.exports = function(app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
+
+
+  app.get("/landing", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/landing.html"));
+  });
+
+  app.get("/hold", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/hold.html"));
+  });
+
 };
