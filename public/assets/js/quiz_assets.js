@@ -1,7 +1,8 @@
 $(document).ready(function () {
     var userData = "";
     $.get("/api/user_data").then(data => {
-        userData = data.username;
+        userData = data;
+        console.log("USER DATA: ", data);
     });
     var pickedCategory;
     var index = 0;
@@ -188,7 +189,7 @@ $(document).ready(function () {
             questionContainer.append("<br>");
         } else {
             $.post("/api/score", {
-                username: userData.username,
+                UserId: userData.id,
                 score: correctCount,
                 CategoryId: pickedCategory
             }).then(function () {
