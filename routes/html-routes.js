@@ -42,6 +42,8 @@ module.exports = function(app) {
 
   app.get("/hold", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/hold.html"));
+
+  
   });
 
   app.get("/game", (req, res) => {
