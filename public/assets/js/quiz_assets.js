@@ -147,7 +147,8 @@ $(document).ready(function () {
     }
 
     function showQuestion(resArr, index) {
-        if (index < resArr.length) {
+        // changed resArr.length to 10
+        if (index < 10) {
             questionContainer.empty();
             questionContainer.show();
             catH = $("<h1>").html(resArr[index].category);
