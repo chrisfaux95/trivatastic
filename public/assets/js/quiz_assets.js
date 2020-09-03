@@ -147,7 +147,8 @@ $(document).ready(function () {
     }
 
     function showQuestion(resArr, index) {
-        if (index < resArr.length) {
+        // changed resArr.length to 10
+        if (index < 10) {
             questionContainer.empty();
             questionContainer.show();
             catH = $("<h1>").html(resArr[index].category);
@@ -188,9 +189,10 @@ $(document).ready(function () {
             }
             questionContainer.append("<br>");
         } else {
+            let finalScore = Math.floor((correctCount / resArr.length) * 1000)
             $.post("/api/score", {
                 UserId: userData.id,
-                score: correctCount,
+                score: finalScore,
                 CategoryId: pickedCategory
             }).then(function () {
                 console.log("score saved");
