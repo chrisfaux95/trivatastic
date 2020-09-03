@@ -94,7 +94,7 @@ $(document).ready(function () {
         const difficulty = $("input[type='radio'][name='difficultyRadios']:checked").val();
         const type = $("input[type='radio'][name='typeRadios']:checked").val();
         const MAXAMNT = 50;
-
+        setHighScoretext(pickedCategory);
         resArr = [];
         correctCount = 0;
         quizAjax(MAXAMNT, category, difficulty, type, resArr);
@@ -166,7 +166,7 @@ $(document).ready(function () {
     function showQuestion(resArr, index) {
         // changed resArr.length to 10
         if (index < 10 && index < resArr.length) {
-            
+
             questionContainer.empty();
             questionContainer.show();
             catH = $("<h1>").html(resArr[index].category);
@@ -179,7 +179,7 @@ $(document).ready(function () {
             var questionP = $("<h4>").html(questionStr);
             questionContainer.append(questionP);
             questionContainer.append("<br>");
-            
+
             if (resArr[index].type === "multiple") {
                 ansArr = [...resArr[index].incorrect_answers, resArr[index].correct_answer]
                 shuffleArray(ansArr);
@@ -229,3 +229,14 @@ $(document).ready(function () {
     }
 
 });
+
+function setHighScoretext(catId) {
+    $.get("/api/scores/by_category/" + catId, (data) => {
+        console.log(data)
+        let hsScore = (data[0] ? data[0].score : "N/A");
+        let hsName = (data[0] ? data[0].User.username : "N/A");
+        console.log(hsScore,hsName);
+        $("#hs-user").text(hsName);
+        $("#hs-score").text(hsScore);
+    });
+}
