@@ -100,11 +100,13 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "button.ansButton", function () {
-        index++;
         var answer = parseInt($(this).attr("data"));
         if (answer === 1) {
             correctCount++;
         }
+        $("#userAns").text("Your answer: " + $(this).html());
+        $("#correctAns").text("Correct answer: " + resArr[index].correct_answer);
+        index++;
         showQuestion(resArr, index);
     })
 
@@ -149,6 +151,7 @@ $(document).ready(function () {
     function showQuestion(resArr, index) {
         // changed resArr.length to 10
         if (index < 10) {
+            
             questionContainer.empty();
             questionContainer.show();
             catH = $("<h1>").html(resArr[index].category);
@@ -204,6 +207,8 @@ $(document).ready(function () {
             var hr = $("<hr>");
             $("#finalContainer").append(finishH, br, hr, br);
             $("#finalContainer").show();
+            $("#userAns").text("Your answer: ");
+            $("#correctAns").text("Correct answer: ");
         }
     }
 
