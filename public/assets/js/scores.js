@@ -20,6 +20,17 @@ $(document).ready(function () {
         var dateArr = date.split("");
         console.log(dateArr);
         var dateStr = "";
+        
+        dateStr += dateArr[11];
+        dateStr += dateArr[12];
+        dateStr += dateArr[13];
+        dateStr += dateArr[14];
+        dateStr += dateArr[15];
+        dateStr += dateArr[16];
+        dateStr += dateArr[17];
+        dateStr += dateArr[18];
+        dateStr += dateArr[19];
+
         dateStr += dateArr[5];
         dateStr += dateArr[6];
         dateStr += dateArr[7];
