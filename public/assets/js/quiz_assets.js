@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    var userData = "";
+    $.get("/api/user_data").then(data => {
+        userData = data.username;
+    });
     var index = 0;
     var resArr = [];
     var correctCount = 0;
@@ -102,6 +106,7 @@ $(document).ready(function () {
     })
 
     function quizAjax(amntNum, catNum, difficulty, type, resArr) {
+        //possibly add amount number to display
         var queryURL = "https://opentdb.com/api.php?amount=" + amntNum + "&category=" + catNum;
         if (difficulty != "any") {
             queryURL += "&difficulty=" + difficulty;
@@ -180,10 +185,10 @@ $(document).ready(function () {
             }
             questionContainer.append("<br>");
         } else {
-            $.ajax({
-                method: "POST",
-                url: "/api/score"
-            })
+            $.post("/api/score", {username: userData.username, score: correctCount }).then(function() {
+                console.log("score saved");
+            });
+
             $("#score").text("Score: " + correctCount);
             questionContainer.hide();
             var finishH = $("<h1>").text("Quiz over!");
