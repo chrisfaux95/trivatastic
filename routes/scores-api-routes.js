@@ -13,10 +13,15 @@ module.exports = (app) => {
 
     //API call to grab scores by User
     app.get("/api/scores/by_user/:username", (req, res) => {
-        db.Score.findAll({
-            include: [db.User, db.Category],
-            where: { username: req.params.username }
-        }).then((dbScore) => res.json(dbScore));
+        db.User.findOne({
+            where: { username: req.params.username },
+            attributes: ['id']
+        }).then((id) => {
+            db.Score.findAll({
+                include: [db.User, db.Category],
+                where: { userId: id.id}
+            }).then((dbScore) => res.json(dbScore));
+        });
     });
 
     //API call to grab scores by category id
