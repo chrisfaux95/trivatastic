@@ -5,15 +5,78 @@
   <title>Passport Authentication</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
-  <link href="./assets/stylesheets/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+  <link href="./assets/stylesheets/background.css" rel="stylesheet">
 </head>
 
 <body>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/logout">
+ <!-- NavBar -->
+
+<body>
+  <nav class="navbar navbar-expand-lg member-page">
+    <a class="navbar-brand" href="#">Mega Dropdown</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="./landing.html">Home Page</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Site Search
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+            <div class="container">
+              <div class="row">
+                <div class="col-md-4">
+                  <span class="text-uppercase text-white">Browse our Site</span>
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="./signup.html">Sign-Up!</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="./members.html">Leader Boards</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="./login.html">Login</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- /.col-md-4  -->
+                <div class="col-md-4">
+                  <ul class="nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link item</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Link item</a>
+                    </li>
+                  </ul>
+                </div>
+                <!-- /.col-md-4  -->
+                <div class="col-md-4">
+                  <a href="">
+                    <img src="https://dummyimage.com/200x100/ccc/000&text=image+link" alt="" class="img-fluid">
+                  </a>
+                  <p class="text-white">Short image call to action</p>
+
+                </div>
+                <!-- /.col-md-4  -->
+              </div>
+            </div>
+            <!--  /.container  -->
+          <!-- End Navbar -->
         Logout
       </a>
     </div>
