@@ -105,8 +105,8 @@ $(document).ready(function () {
         if (answer === 1) {
             correctCount++;
         }
-        $("#userAns").text("Your answer: " + $(this).html());
-        $("#correctAns").text("Correct answer: " + resArr[index].correct_answer);
+        $("#userAns").html("Your answer: " + $(this).text());
+        $("#correctAns").html("Correct answer: " + resArr[index].correct_answer);
         index++;
         showQuestion(resArr, index);
     })
