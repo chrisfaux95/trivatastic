@@ -16,10 +16,10 @@ module.exports = (app) => {
         db.User.findOne({
             where: { username: req.params.username },
             attributes: ['id']
-        }).then((id) => {
+        }).then((user) => {
             db.Score.findAll({
                 include: [db.User, db.Category],
-                where: { userId: id.id}
+                where: { userId: user.id }
             }).then((dbScore) => res.json(dbScore));
         });
     });
