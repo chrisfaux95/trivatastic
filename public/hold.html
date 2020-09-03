@@ -6,15 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="Description" content="Enter your description here" />
-  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAQWucAAAAAAEKl/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERECIiIiIiIiIQISIiIRIiEhAiIiIAEiIiECIiIgAiIiIQIiIiIRIiIhAiIiIAEiIiECIiIgAREiIQIiIRIAASIhAiIAEiABIiECIgASIAEiIQIiABEQAiIhAiIgAAAiIiECEiIiIiIhIQIiIiIiIiIhEAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA" rel="icon" type="image/x-icon" />
+  <link
+    href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAQWucAAAAAAEKl/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERERECIiIiIiIiIQISIiIRIiEhAiIiIAEiIiECIiIgAiIiIQIiIiIRIiIhAiIiIAEiIiECIiIgAREiIQIiIRIAASIhAiIAEiABIiECIgASIAEiIQIiABEQAiIhAiIgAAAiIiECEiIiIiIhIQIiIiIiIiIhEAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAA"
+    rel="icon" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css"
+    integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/stylesheets/background.css">
   <title>Title</title>
 </head>
+
 <body>
-<!-- NavBar -->
+  <!-- NavBar -->
 
 
   <nav class="mb-1 navbar navbar-expand-lg navbar-light quiz-page">
@@ -37,23 +41,22 @@
           <a class="nav-link" href="/login">Login</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/hold">Quiz</a>
-          </li>
+          <a class="nav-link" href="/hold">Quiz</a>
+        </li>
       </ul>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-user"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right dropdown-default"
-            aria-labelledby="navbarDropdownMenuLink-333">
-            <a id="login-nav" class="dropdown-item" href="/login">Log In</a>
-            <a id="signup-nav"class="dropdown-item" href="/signup">Sign Up!</a>
-            <a id="logout-nav" class="dropdown-item" href="/logout">Logout</a>
-          </div>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+          <a id="login-nav" class="dropdown-item" href="/login">Log In</a>
+          <a id="signup-nav" class="dropdown-item" href="/signup">Sign Up!</a>
+          <a id="logout-nav" class="dropdown-item" href="/logout">Logout</a>
+        </div>
     </div>
   </nav>
-  
+
   <!-- End of Navbar -->
 
   <!-- Left side Cards  -->
@@ -68,18 +71,21 @@
         <hr>
         <h5 class="card-text" id="score"> Score </h5>
         <hr>
-        <h5 class="" id="highScore">High Scores</h5>
+        <div>
+          <h5 class="" id="highScore">High Scores</h5>
+          <p><span id="hs-user"></span>: <span id="hs-score"></span></p>
+        </div>
         <hr>
         <h5 id="userAns">Your answer: </h5>
         <hr>
         <h5 id="correctAns">Correct answer: </h5>
       </div>
     </div>
-  
+
     <!-- Jumbotron to Display Questions! -->
     <div class="col-md-9">
       <div class="jumbotron jumbotron-fluid mx-0">
-        
+
         <form id="category-container">
           <div class="form-group">
             <label for="inputCategory">Category</label>
@@ -99,19 +105,19 @@
         </form>
 
         <div id="question-container"></div>
-         <!-- <div id="clock"></div>
+        <!-- <div id="clock"></div>
          <div id="localScore"></div> -->
-          <!-- <div id="question">Question</div> -->
-          <!-- <div id="answer-buttons" class="btn-grid"> -->
-            <!-- <button class="btn btn-1 ansButton"></button>
+        <!-- <div id="question">Question</div> -->
+        <!-- <div id="answer-buttons" class="btn-grid"> -->
+        <!-- <button class="btn btn-1 ansButton"></button>
             <button class="btn btn-2 ansButton"></button>
             <button class="btn btn-3 ansButton"></button>
             <button class="btn btn-4 ansButton"></button> -->
-          <!-- </div> -->
-          <!-- <div class="controls">
+        <!-- </div> -->
+        <!-- <div class="controls">
             <button id="next-btn" class="next-btn btn">Next</button>
           </div> -->
-    
+
         <div id="finalContainer"></div>
       </div>
     </div>
@@ -123,10 +129,8 @@
 
 
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-3.5.1.js"
-  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="./assets/js/mainpage.js" type="text/javascript"></script>
