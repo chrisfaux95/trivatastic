@@ -3,6 +3,7 @@ $(document).ready(function () {
     $.get("/api/user_data").then(data => {
         userData = data.username;
     });
+    var pickedCategory;
     var index = 0;
     var resArr = [];
     var correctCount = 0;
@@ -87,6 +88,7 @@ $(document).ready(function () {
     $(".categoryBtn").on("click", function () {
         event.preventDefault();
         const category = $("#inputCategory :selected").val()
+        pickedCategory = category;
         const difficulty = $("input[type='radio'][name='difficultyRadios']:checked").val();
         const type = $("input[type='radio'][name='typeRadios']:checked").val();
         const MAXAMNT = 50;
@@ -99,7 +101,7 @@ $(document).ready(function () {
     $(document).on("click", "button.ansButton", function () {
         index++;
         var answer = parseInt($(this).attr("data"));
-        if(answer === 1){
+        if (answer === 1) {
             correctCount++;
         }
         showQuestion(resArr, index);
@@ -162,7 +164,7 @@ $(document).ready(function () {
                 shuffleArray(ansArr);
                 ansArr.forEach(e => {
                     let ansBtn = $("<button>").html(e).addClass("btn-hover color-3 ansButton");
-                    if(e === resArr[index].correct_answer){
+                    if (e === resArr[index].correct_answer) {
                         ansBtn.attr("data", 1);
                     } else {
                         ansBtn.attr("data", 0);
@@ -174,10 +176,10 @@ $(document).ready(function () {
                 ansBtn1.attr("class", "btn btn-success ansButton");
                 var ansBtn2 = $("<button>").html("False");
                 ansBtn2.attr("class", "btn btn-danger ansButton");
-                if(resArr[index].correct_answer === "True"){
+                if (resArr[index].correct_answer === "True") {
                     ansBtn1.attr("data", 1);
                     ansBtn2.attr("data", 0);
-                } else if (resArr[index].correct_answer === "False"){
+                } else if (resArr[index].correct_answer === "False") {
                     ansBtn1.attr("data", 0);
                     ansBtn2.attr("data", 1);
                 }
@@ -185,7 +187,11 @@ $(document).ready(function () {
             }
             questionContainer.append("<br>");
         } else {
-            $.post("/api/score", {username: userData.username, score: correctCount }).then(function() {
+            $.post("/api/score", {
+                username: userData.username,
+                score: correctCount,
+                CategoryId: pickedCategory
+            }).then(function () {
                 console.log("score saved");
             });
 
