@@ -71,16 +71,11 @@ module.exports = (app) => {
     //API call to push new scores
     app.post("/api/score", (req, res) => {
         // console.log("POSTING SCORES");
-        db.User.findOne({
-            where: { username: req.body.username },
-            attributes: ['id']
-        }).then((user) => {
-            db.Score.create({
-                userId: user.id,
-                CategoryId: req.body.CategoryId,
-                score: req.body.score
-            }).then((dbScore) => res.json(dbScore));
-        });
+        db.Score.create({
+            UserId: req.body.UserId,
+            CategoryId: req.body.CategoryId,
+            score: req.body.score
+        }).then((dbScore) => res.json(dbScore));
     });
 
 
