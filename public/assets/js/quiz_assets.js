@@ -2,9 +2,9 @@ $(document).ready(function () {
     var userData = "";
     $.get("/api/user_data").then(data => {
         userData = data;
-        console.log("USER DATA: ", userData);
+        console.log("USER DATA USERNAME: ", userData.username);
+        $("#userNameText").text(userData.username);
     });
-    $("#userNameText").text(userData.username);
     var pickedCategory;
     var index = 0;
     var resArr = [];

@@ -3,12 +3,14 @@ $(document).ready(function () {
   $.get("/api/user_data").then(data => {
     userData = data;
     console.log("USER DATA: ", userData);
+    var userEl = $("<h1>").text(userData.username);
+    $("#usernameRow").append(userEl);
 
-    $.get("/api/scores/by_user/" + userData.username).then(function(data){
+    $.get("/api/scores/by_user/" + userData.username).then(function (data) {
       console.log(data);
       var scoresContainer = $("#scoreContainer");
-      var userEl = $("<h1>").text(data[0].User.username);
-      $("#usernameRow").append(userEl);
+      // var userEl = $("<h1>").text(data[0].User.username);
+      // $("#usernameRow").append(userEl);
       for (var i = 0; i < data.length; i++) {
         var rowEl = $("<div>").addClass("row");
         var colEl1 = $("<div>").addClass("col-md-6");
