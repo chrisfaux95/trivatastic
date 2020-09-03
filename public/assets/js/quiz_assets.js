@@ -188,9 +188,10 @@ $(document).ready(function () {
             }
             questionContainer.append("<br>");
         } else {
+            let finalScore = Math.floor((correctCount / resArr.length) * 1000)
             $.post("/api/score", {
                 UserId: userData.id,
-                score: correctCount,
+                score: finalScore,
                 CategoryId: pickedCategory
             }).then(function () {
                 console.log("score saved");
