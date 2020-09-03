@@ -13,15 +13,19 @@ $(document).ready(function () {
       // $("#usernameRow").append(userEl);
       for (var i = 0; i < data.length; i++) {
         var rowEl = $("<div>").addClass("row");
-        var colEl1 = $("<div>").addClass("col-md-6");
-        var colEl2 = $("<div>").addClass("col-md-6");
+        var colEl1 = $("<div>").addClass("col-md-4");
+        var colEl2 = $("<div>").addClass("col-md-4");
+        var colEl3 = $("<div>").addClass("col-md-4");
+        var date = data[i].createdAt;
 
-        console.log(i);
+        console.log("DATA: ", data);
         var categoryEl = $("<h3>").text(data[i].Category.name + ": ");
         var scoreEl = $("<h3>").text(data[i].score);
+        var dateEl = $("<h3>").text(date);
         colEl1.append(categoryEl);
         colEl2.append(scoreEl);
-        rowEl.append(colEl1, colEl2);
+        colEl3.append(dateEl);
+        rowEl.append(colEl1, colEl2, colEl3);
 
         scoresContainer.append(rowEl);
       }
