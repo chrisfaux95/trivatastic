@@ -13,11 +13,11 @@ module.exports = function(app) {
 
   // FIXING LINKS
   app.get("/members", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
+    // If no user, send to signup
+    if (!req.user) {
+      res.redirect("/signup");
     }
-    res.sendFile(path.join(__dirname, "../public/signup.html"));
+    res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
   app.get("/login", (req, res) => {
