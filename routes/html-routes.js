@@ -44,4 +44,8 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/hold.html"));
   });
 
+  app.get("/game", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/game.html"))
+  })
+
 };
