@@ -180,6 +180,10 @@ $(document).ready(function () {
             }
             questionContainer.append("<br>");
         } else {
+            $.ajax({
+                method: "POST",
+                url: "/api/score"
+            })
             $("#score").text("Score: " + correctCount);
             questionContainer.hide();
             var finishH = $("<h1>").text("Quiz over!");
