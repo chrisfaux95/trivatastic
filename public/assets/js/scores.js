@@ -17,11 +17,23 @@ $(document).ready(function () {
         var colEl2 = $("<div>").addClass("col-md-4");
         var colEl3 = $("<div>").addClass("col-md-4");
         var date = data[i].createdAt;
+        var dateArr = date.split("");
+        console.log(dateArr);
+        var dateStr = "";
+        dateStr += dateArr[5];
+        dateStr += dateArr[6];
+        dateStr += dateArr[7];
+        dateStr += dateArr[8];
+        dateStr += dateArr[9];
+        dateStr += dateArr[4];
+        dateStr += dateArr[0];
+        dateStr += dateArr[1];
+        dateStr += dateArr[2];
+        dateStr += dateArr[3];
 
-        console.log("DATA: ", data);
         var categoryEl = $("<h3>").text(data[i].Category.name + ": ");
         var scoreEl = $("<h3>").text(data[i].score);
-        var dateEl = $("<h3>").text(date);
+        var dateEl = $("<h3>").text(dateStr);
         colEl1.append(categoryEl);
         colEl2.append(scoreEl);
         colEl3.append(dateEl);
