@@ -2,7 +2,8 @@ $(document).ready(function () {
     var userData = "";
     $.get("/api/user_data").then(data => {
         userData = data;
-        console.log("USER DATA: ", data);
+        console.log("USER DATA USERNAME: ", userData.username);
+        $("#userNameText").text(userData.username);
     });
     var pickedCategory;
     var index = 0;
@@ -100,11 +101,13 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "button.ansButton", function () {
-        index++;
         var answer = parseInt($(this).attr("data"));
         if (answer === 1) {
             correctCount++;
         }
+        $("#userAns").text("Your answer: " + $(this).html());
+        $("#correctAns").text("Correct answer: " + resArr[index].correct_answer);
+        index++;
         showQuestion(resArr, index);
     })
 
@@ -148,7 +151,8 @@ $(document).ready(function () {
 
     function showQuestion(resArr, index) {
         // changed resArr.length to 10
-        if (index < 10) {
+        if (index < 10 && index < resArr.length) {
+            
             questionContainer.empty();
             questionContainer.show();
             catH = $("<h1>").html(resArr[index].category);
@@ -204,6 +208,8 @@ $(document).ready(function () {
             var hr = $("<hr>");
             $("#finalContainer").append(finishH, br, hr, br);
             $("#finalContainer").show();
+            $("#userAns").text("Your answer: ");
+            $("#correctAns").text("Correct answer: ");
         }
     }
 
