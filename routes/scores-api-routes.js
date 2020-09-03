@@ -27,7 +27,12 @@ module.exports = (app) => {
         }).then((dbScore) => res.json(dbScore));
     })
 
-
+    app.get("/api/get_score/:username/:cat", (req, res) => {
+        db.Score.findAll({
+            include: [db.User, db.Category],
+            where: { CategoryId: req.params.cat, username: req.params.username }
+        }).then((dbScore) => res.json(dbScore));
+    })
 
     //API call to push new scores
     app.post("/api/score", (req, res) => {
@@ -35,5 +40,6 @@ module.exports = (app) => {
         db.Score.create(req.body).then(dbScore => res.json(dbScore));
 
     });
+
 
 }
