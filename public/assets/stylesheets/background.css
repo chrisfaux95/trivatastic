@@ -91,6 +91,13 @@ body {
  .signup-page{
   background-color: #B6FF00;
  }
+ .login-page{
+  background-color: #FF9900;
+ }
+
+
+
+
   /* Animated Card Background */
 
 /* .card{
@@ -178,3 +185,13 @@ body {
   font-size: 20px;
   }
   }
+/* End of Signup Page Elements */
+
+/* Login Page */
+.card-login{
+  background-color: #FF9900;
+}
+.login-head{
+  color: black;
+  font-weight: bold;
+}
