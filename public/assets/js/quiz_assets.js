@@ -143,6 +143,20 @@ $(document).ready(function () {
         }
     }
 
+    let clock = 60;
+    function startClock(){
+        var gameClock = setInterval(function(){
+            if(clock >= 0){
+                $("#clock").text("You have " + clock + " seconds to finish the quiz");
+                clock--;
+                $("#localScore").text("Your score is " + correctCount);
+            }
+            else{
+                $("#localScore").text("Time's up. Your score was " + correctCount);
+            }
+        }, 1000)
+    }
+
     function showQuestion(resArr, index) {
         if (index < resArr.length) {
             questionContainer.empty();
@@ -151,12 +165,13 @@ $(document).ready(function () {
             questionContainer.append(catH);
             questionContainer.append("<hr>");
             questionContainer.append("<br>");
-
+            startClock()
             var ansArr = [];
             var questionStr = resArr[index].question;
             var questionP = $("<h4>").html(questionStr);
             questionContainer.append(questionP);
             questionContainer.append("<br>");
+            
             if (resArr[index].type === "multiple") {
                 ansArr = [...resArr[index].incorrect_answers, resArr[index].correct_answer]
                 shuffleArray(ansArr);
