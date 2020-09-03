@@ -150,7 +150,7 @@ $(document).ready(function () {
 
     function showQuestion(resArr, index) {
         // changed resArr.length to 10
-        if (index < 10) {
+        if (index < 10 && index < resArr.length) {
             
             questionContainer.empty();
             questionContainer.show();
