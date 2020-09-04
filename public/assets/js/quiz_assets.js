@@ -217,7 +217,7 @@ $(document).ready(function () {
                 console.log("score saved");
             });
 
-            $("#score").text("Score: " + correctCount);
+            $("#score").text("Score: " + finalScore);
             questionContainer.hide();
             var finishH = $("<h1>").text("Quiz over!");
             var hr = $("<hr>");
