@@ -208,7 +208,8 @@ $(document).ready(function () {
             }
             questionContainer.append("<br>");
         } else {
-            let finalScore = Math.floor((correctCount / resArr.length) * 1000)
+            let total = (resArr.length > 10 ? 10 : resArr.length);
+            let finalScore = Math.floor((correctCount / total) * 1000)
             $.post("/api/score", {
                 UserId: userData.id,
                 score: finalScore,
