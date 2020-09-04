@@ -72,10 +72,16 @@ module.exports = (app) => {
     //API call to grab scores by category id
     app.get("/api/scores/by_category/:cat", (req, res) => {
         db.Score.findAll({
-            include: {
-                model: db.User,
-                attributes: ['username']
-            },
+            include: [
+                {
+                    model: db.User,
+                    attributes: ['username']
+                },
+                {
+                    model: db.Category,
+                    attributes: ['name']
+                }
+            ],
             order: sequelize.literal('Score.score DESC'),
             where: { CategoryId: req.params.cat }
         }).then((dbScore) => res.json(dbScore));
