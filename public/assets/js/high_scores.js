@@ -39,7 +39,7 @@ categories.sort((a, b) => {
 
 function getHighScores() {
     let category = $("#inputCategory :selected").val();
-    if (category === 0) {
+    if (category == 0) {
         $.get("/api/scores", (data) => {
             displayScores(data);
         });
@@ -54,7 +54,7 @@ function displayScores(data) {
     //EMPTY THE SCORE TABLE
     let scoreDump = $("#scores-display")
     scoreDump.empty();
-
+    // console.log(data);
     //CONSTRUCT THE TABLE HEADER
     let thead = $("<thead>");
     let tr = $("<tr>");
@@ -67,6 +67,7 @@ function displayScores(data) {
     //BEGIN CONSTRUCTION OF THE BODY
     let tbody = $("<tbody>");
     data.forEach(e => {
+        
         let row = $("<tr>").attr("scope", "row");
         let score = $("<td>").text(e.score);
         let cat = $("<td>").text(e.Category.name);
