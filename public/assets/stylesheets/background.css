@@ -38,7 +38,7 @@ body {
  .member-page{
    background-color: yellow;
  }
- .signup-page{
+ .highscore-page {
   background-color: #B6FF00;
  }
  .login-page{
@@ -47,7 +47,9 @@ body {
  .quiz-page{
    background-color:#228DFF ;
  }
-
+ .signup-page{
+   background-color: #BA01FF;
+ }
 
 
 
