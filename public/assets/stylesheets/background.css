@@ -107,6 +107,11 @@ body {
   box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
 }
 
+/* START button */
+
+.btn-2 {
+  margin-top: 1%;
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);}
 
 /* Sign up Page Form */
 
@@ -188,3 +193,5 @@ body {
   color: black;
   font-weight: bold;
 }
+
+/* Radio Style */
