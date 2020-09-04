@@ -47,9 +47,7 @@ module.exports = function(app) {
   });
 
   app.get("/hold", (req, res) => {
-    res.sendFile(path.join(__dirname, "../public/hold.html"));
-
-  
+    res.sendFile(path.join(__dirname, "../public/hold.html"));  
   });
 
   app.get("/game", (req, res) => {
@@ -58,5 +56,9 @@ module.exports = function(app) {
   
   app.get("/members", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/members.html"))
+  })
+
+  app.get("/highscores", (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/highscores.html"));
   })
 };
